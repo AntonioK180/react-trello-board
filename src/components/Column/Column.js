@@ -4,8 +4,8 @@ import './Column.css';
 
 const Column = (props) => {
     const [cardName, setCardName] = useState("");
-	const [cards, setCards] = useState(props.cards);
-	
+	const [cards, setCards] = useState([{}]);
+
 	const addCard = () => {
 		const card = {
 			key: cards.length,
