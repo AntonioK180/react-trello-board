@@ -1,24 +1,25 @@
 import './App.css';
 import Login from './components/Login/Login';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from './components/Homepage/Homepage';
-import React from 'react';
-import userContext from './UserContext';
-import { useState } from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 
 const App = () => {
-	const [user, setUser] = useState("");
-
 	return (
-		<userContext.Provider value={{user: user, setUser: setUser}}>
+		<>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Homepage/>}></Route>							
-					<Route path="login" element={<Login/>}></Route>
+                    <Route path="/*" element={<Login/>} />
+                    {localStorage.getItem('logged_user') ?
+						<>
+							<Route path="/home" element={<Homepage/>} />
+						</>
+                        :
+                        <></>
+                    }
 				</Routes>
 			</BrowserRouter>
-		</userContext.Provider>
+		</>
 	)
 }
 
