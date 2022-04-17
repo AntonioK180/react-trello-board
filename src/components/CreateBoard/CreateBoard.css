@@ -1,9 +1,37 @@
-.create-board {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 40%;
-  height: 100%;
-  background-color: #fafafa;
+.CreateBoard {
+	border-radius: 3px;
+	background-color: white;
+	position: fixed;
+    width: 300px;
+    top: 48px;
+    left: 550px;
+	margin-top: 20px;
+}
+
+.board-name-label {
+	display: flex;
+	color: #5e6c84;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+}
+
+.board-name-input {
+	outline: none;
+    border: none;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    border-radius: 3px;
+    padding: 8px 12px;
+    box-shadow: inset 0 0 0 2px #dfe1e6;
+    background-color: #fafbfc;
+    width: 100%;
+	margin-bottom: 8px;
+}
+
+.create-board-form {
+	padding: 12px;
 }
