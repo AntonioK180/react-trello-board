@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import './Homepage.css';
-import Board from '../Board/Board';
 
-const Homepage = (username, boards) => {
+const Homepage = (props) => {
     const [state, setState] = useState("");
 
     const workspaceOnClick = () => {
@@ -49,7 +48,7 @@ const Homepage = (username, boards) => {
                     </div>
                     <div className="homepage-title-account">
                         <div className="account-icon"></div>
-                        <h2>{username}</h2>
+                        <h2>{props.username}</h2>
                     </div>
                 </div>
                 <div className="homepage-board">

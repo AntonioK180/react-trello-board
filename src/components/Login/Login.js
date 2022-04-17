@@ -9,7 +9,8 @@ const Login = () => {
     useEffect(() => {
         async function DidMount() {
             if (localStorage.getItem('logged_user')) {
-                navigate('/home');
+                window.location.href = "/home";
+                navigate('/home')
             }
         }
 
@@ -38,6 +39,7 @@ const Login = () => {
         // set the logged-in user
         localStorage.setItem("logged_user", username);
 
+        window.location.href = "/home";
         navigate("/home");
     }
 
