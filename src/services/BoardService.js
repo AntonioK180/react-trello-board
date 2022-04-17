@@ -1,10 +1,11 @@
 export class BoardService {
+    getCurrentUser(users, loggedUser) {
+        return users.find(user => user.username === loggedUser);
+    }
 
-	getCurrentBoard(users, loggedUser) {
+	getCurrentBoard(users, loggedUser, searchedBoard=this.getCurrentUser(users, loggedUser).active_board) {
         const user = users.find(user => user.username === loggedUser);
-        const activeBoard = user.active_board;
 
-        return user.boards.find(board => board.id === activeBoard);	
+        return user.boards.find(board => board.board_name === searchedBoard);
 	}
-
 }

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Column from '../Column/Column';
 import './Board.css';
 import {v4 as uuidv4} from 'uuid'
-import { BoardService } from '../../services/BoardService';
+import {BoardService} from '../../services/BoardService';
 
 
 const Board = (props) => {
@@ -34,7 +34,10 @@ const Board = (props) => {
 
     return (
         <div className="board">
-            {getBoard().columns.map(column => <Column key={column.id} name={column.name} order={column.order}/>)}
+            {boardService.getCurrentBoard(props.users, props.loggedUser)
+                .columns
+                .map(column => <Column key={column.id} name={column.name} order={column.order}/>)}
+
             <div className="add-column">
                 <button id="btn-add-list" onClick={showAddWindow}>+ Add another list</button>
                 <div id="add-window">
