@@ -4,7 +4,7 @@ import { useContext, useState } from 'react';
 import EditCard from '../EditCard/EditCard';
 
 const Card = (props) => {
-	const [displayEdit, setDisplayEdit] = useState(true);
+	const [displayEdit, setDisplayEdit] = useState(false);
 
 	const openEditScreen = () => {
 		setDisplayEdit(true);
