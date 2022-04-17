@@ -21,15 +21,16 @@ const Column = (props) => {
 				<h1 className='single-column-name'>{props.name}</h1>
 			</div>
 			{cards.map((card) => <Card key={card} name={card.name} />)}
-			<div id="add-card-window">
+			<form onSubmit={addCard} className="add-card-window">
 				<input type="text"
+					className='add-card-field'
 					id="add-card-input"
 					placeholder="Enter card title..."
 					onChange={(event) => setCardName(event.target.value)} />
 				<div className="buttons">
-					<button className="btn-add-card" onClick={addCard}>Add card</button>
+					<button type='submit' className="btn-add-card" >Add card</button>
 				</div>
-			</div>
+			</form>
 		</div>
 	);
 }

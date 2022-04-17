@@ -20,3 +20,23 @@
     position: relative;
     text-overflow: ellipsis;
 }
+
+.add-card-window {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-card-field {
+    display: flex;
+    border-radius: 3px;
+    color: #5e6c84;
+    display: block;
+    padding: 4px 8px;
+    position: relative;
+    text-decoration: none;
+    user-select: none;
+}
+
+.btn-add-card {
+    height: 28px;
+}

@@ -17,3 +17,16 @@
 .light-grey-bg:hover {
 	background-color: #3E3E3E;
 }
+
+.window-overlay {
+	align-items: flex-start;
+    background-color: #000000a3;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 18;
+}
