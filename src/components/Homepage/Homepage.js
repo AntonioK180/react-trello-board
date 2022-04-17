@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 import './Homepage.css';
 import userContext from '../../UserContext';
+import Board from '../Board/Board';
 
 const Homepage = () => {
     const [state, setState] = useState("");
@@ -53,6 +54,7 @@ const Homepage = () => {
                         <h2>{user.user}</h2>
                     </div>
                 </div>
+                <Board columns={[]}/>
             </div>
         )
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Column.css';
 
-const Column = () => (
+const Column = (props) => (
   <div className="Column">
     Column Component
   </div>
