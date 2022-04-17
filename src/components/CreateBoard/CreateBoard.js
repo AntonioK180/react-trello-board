@@ -42,7 +42,7 @@ const CreateBoard = (props) => {
                                setBoardName(event.target.value)
                            }}
                            placeholder="Board name"/>
-                <button type="submit">Create</button>
+                <button className='button-create-board cursor-pointer' type="submit">Create</button>
             </form>
         </div>
     );

@@ -14,6 +14,7 @@
     font-size: 12px;
     line-height: 16px;
     font-weight: 700;
+    margin-bottom: 4px;
 }
 
 .board-name-input {
@@ -34,4 +35,23 @@
 
 .create-board-form {
 	padding: 12px;
+}
+
+.button-create-board {
+    background-color: #0079bf;
+    box-shadow: none;
+    border: none;
+    color: #ffffff;
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    padding: 6px 12px;
+    text-decoration: none;
+    white-space: normal;
 }
