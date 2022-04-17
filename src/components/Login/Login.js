@@ -1,48 +1,64 @@
-import React from 'react';
-import "./Login.css";
-import userContext from '../../UserContext';
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import React, {useEffect, useState} from 'react'
+import "./Login.css"
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-	const [username, setUsername] = useState("");
-	const user = useContext(userContext);
-	const navigate = useNavigate();
+    let navigate = useNavigate();
+    const [username, setUsername] = useState("");
 
-	const handleSubmit = (event) => {
-		event.preventDefault();
-		const usernames = localStorage.getItem("usernames");
+    useEffect(() => {
+        async function DidMount() {
+            if (localStorage.getItem('logged_user')) {
+                navigate('/home');
+            }
+        }
 
-		if (usernames !== null) {
-			if (!usernames.includes(username)) {
-				usernames.push(username);
-				localStorage.setItem("usernames", usernames);	
-			}
-		}
+        DidMount();
 
-		user.setUser(username);
-		navigate("/")
-	}
+    }, []);
 
-	return (
-		<div className="form">
-			<form onSubmit={handleSubmit}>
-				<h1>Login</h1>
-				<div className="input-container">
-					<input type="text" name="uname"
-						value={username}
-						onChange={(event) => {
-							setUsername(event.target.value);
-						}}
-						placeholder="Enter your username" />
-				</div>
-				<div className="button-container">
-					<input type="submit" value="Login" />
-				</div>
-			</form>
-		</div>
-	)
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        // get the users massive
+        const users = JSON.parse(localStorage.getItem("users"))
+
+        if (users !== null) {
+            // if user don't exist - add the new user to the existing users
+            if (!users.includes(username)) {
+                users.push(username);
+                localStorage.setItem("users", JSON.stringify(users));
+            }
+        } else {
+            // if there isn't users array - create the array of users
+            const users_json = [username];
+            localStorage.setItem("users", JSON.stringify(users_json));
+        }
+
+        // set the logged-in user
+        localStorage.setItem("logged_user", username);
+
+        navigate("/home");
+    }
+
+    return (
+        <div className="form">
+            <form onSubmit={handleSubmit}>
+                <h1>Login</h1>
+                <div className="input-container">
+                    <input type="text" name="uname"
+                           value={username}
+                           onChange={(event) => {
+                               setUsername(event.target.value)
+                           }}
+                           placeholder="Enter your username"/>
+                </div>
+                <div className="button-container">
+                    <input type="submit" value="Login"/>
+                </div>
+            </form>
+        </div>
+    )
 }
 
-export default Login;
+export default Login
