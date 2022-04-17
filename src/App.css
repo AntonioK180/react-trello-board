@@ -1,3 +1,15 @@
 .App {
 	text-align: center;
 }
+
+.cursor-pointer:hover {
+	cursor: pointer;
+}
+
+.grey-bg:hover {
+	background-color: #E2E4E9;
+}
+
+.dark-blue-bg:hover {
+	background-color: #066eaa;
+}

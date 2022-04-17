@@ -2,31 +2,44 @@ import './CreateBoard.css';
 import {useState} from "react";
 import { v4 as uuidv4 } from 'uuid'
 
-const CreateBoard = () => {
+const CreateBoard = (props) => {
     const [boardName, setBoardName] = useState("");
+
+    const getBoard = (param) => {
+        const user = props.users.find(user => user.username === props.loggedUser);
+
+        return user.boards.find(board => board.board_name === param);
+    }
 
     const handleBoardSubmit = (event) => {
         event.preventDefault();
 
-        const curr_user = localStorage.getItem("logged_user");
-        const json_structure = JSON.parse(localStorage.getItem("users"));
+        const user = props.users.find(user => user.username === props.loggedUser);
 
-        const user = json_structure.find(user => user.username === curr_user);
-        const boards = {
+        const board = getBoard(boardName);
+        console.log(boardName);
+        console.log(board);
+        if (board) {
+            user.active_board = board.id;
+            console.log(board.id);
+            localStorage.setItem("users", JSON.stringify(props.users));
+            return;
+        }
+
+        const newBoard = {
             id: uuidv4(),
             board_name: boardName,
             columns: []
         }
-        user.boards.push(boards);
+        user.boards.push(newBoard);
+        user.active_board = newBoard.id;
 
-
-        localStorage.setItem("users", JSON.stringify(json_structure));
+        localStorage.setItem("users", JSON.stringify(props.users));
     }
 
     return (
         <div className="create-board">
-            <h1>Create Board</h1>
-            <form>
+            <form onSubmit={handleBoardSubmit}>
                 <label>
                     Board Name:
                     <input type="text" name="boardName"
@@ -36,7 +49,7 @@ const CreateBoard = () => {
                            }}
                            placeholder="Board name"/>
                 </label>
-                <button type="submit" onSubmit={handleBoardSubmit}>Create</button>
+                <button type="submit">Create</button>
             </form>
         </div>
     );

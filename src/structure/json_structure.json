@@ -3,6 +3,7 @@
   "users": [
     {
       "username": "<name> (type string)",
+      "active_board": "<board_id> (type int)",
       "boards": [
         {
           "id": "<id> (type int)",
