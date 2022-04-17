@@ -44,7 +44,7 @@ textarea {
 
 .description-value {
 	background-color: #EAECF0;
-	max-width: 95%;
+	max-width: 72.5%;
 	margin-left: var(--icons-square-size);
 	box-sizing: border-box;
 	padding: 8px 12px;
@@ -128,4 +128,65 @@ textarea {
 	position: absolute;
 	top: 0;
 	right: 12px;
+}
+
+.card-properties {
+	display: flex;
+	max-width: 72.5%;
+	margin-left: var(--icons-square-size);
+}
+
+.multiple-labels {
+	display: inline-flex;
+}
+
+.single-label-preview {
+	background-color: red;
+	border-radius: 3px;
+    box-sizing: border-box;
+    font-weight: 600;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 4px 4px 0;
+    min-width: 40px;
+    padding: 0 12px;
+    width: auto;
+}
+
+.card-properties-heading {
+	color: #5e6c84;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    line-height: 20px;
+    margin: 0 8px 4px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.plus-icon-label {
+	height: 16px;
+	background-color: #091e420a;
+    border: none;
+    border-radius: 3px;
+    margin: 0 18px 8px 0;
+	font-size: 18px;
+	font-weight: bold;
+    line-height: 16px;
+    padding: 8px;
+}
+
+.plus-icon-label::before {
+	content: "\FF0B";
+}
+
+.member-circles-preview {
+	display: inline-flex;
+}
+
+.member-circles-preview > .single-member-circle {
+	margin-left: 0;
+	margin-right: 4px;
 }
