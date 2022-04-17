@@ -8,8 +8,6 @@ const CreateBoard = (props) => {
     const [boardName, setBoardName] = useState("");
 
     const handleBoardSubmit = (event) => {
-        event.preventDefault();
-
         const user = boardService.getCurrentUser(props.users, props.loggedUser);
 
         const board = boardService.getCurrentBoard(props.users, props.loggedUser, boardName);
