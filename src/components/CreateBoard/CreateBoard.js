@@ -5,19 +5,34 @@ import { v4 as uuidv4 } from 'uuid'
 const CreateBoard = (props) => {
     const [boardName, setBoardName] = useState("");
 
+    const getBoard = (param) => {
+        const user = props.users.find(user => user.username === props.loggedUser);
+
+        return user.boards.find(board => board.board_name === param);
+    }
+
     const handleBoardSubmit = (event) => {
         event.preventDefault();
 
         const user = props.users.find(user => user.username === props.loggedUser);
-        const id = uuidv4();
-        const boards = {
-            id: id,
+
+        const board = getBoard(boardName);
+        console.log(boardName);
+        console.log(board);
+        if (board) {
+            user.active_board = board.id;
+            console.log(board.id);
+            localStorage.setItem("users", JSON.stringify(props.users));
+            return;
+        }
+
+        const newBoard = {
+            id: uuidv4(),
             board_name: boardName,
             columns: []
         }
-        user.boards.push(boards);
-        user.active_board = id;
-
+        user.boards.push(newBoard);
+        user.active_board = newBoard.id;
 
         localStorage.setItem("users", JSON.stringify(props.users));
     }

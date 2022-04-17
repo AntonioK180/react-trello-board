@@ -29,6 +29,13 @@ const Homepage = (props) => {
         setDisplayCreateBoard(!displayCreateBoard);
     }
 
+    const getBoard = () => {
+        const user = props.users.find(user => user.username === props.loggedUser);
+        const activeBoard = user.active_board;
+
+        return user.boards.find(board => board.id === activeBoard);
+    }
+
     return (
         <>
             {displayCreateBoard ? <CreateBoard
@@ -58,11 +65,13 @@ const Homepage = (props) => {
                         <h2>{props.username}</h2>
                     </div>
                 </div>
-                <div className="homepage-board">
-                    <Board columns={[]}
-                           loggedUser={props.loggedUser}
-                           users={props.users}/>
-                </div>
+                {getBoard() ?
+                    <div className="homepage-board">
+                        <Board loggedUser={props.loggedUser}
+                               users={props.users}/>
+                    </div>
+                    :
+                    <></>}
             </div>
         </>
     )
