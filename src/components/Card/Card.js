@@ -1,12 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Card.css';
+import { useContext, useState } from 'react';
+import EditCard from '../EditCard/EditCard';
 
-const Card = () => (
-  <div className="Card">
-    Card Component
-  </div>
-);
+const Card = (props) => {
+	const [displayEdit, setDisplayEdit] = useState(false);
+
+	const openEditScreen = () => {
+		setDisplayEdit(true);
+	}
+
+	const closeEditScreen = () => {
+		setDisplayEdit(false);
+	}
+
+
+	return (
+		<div className="Card">
+			<p onClick={openEditScreen}> click me </p>
+			Card Component
+			{ displayEdit ? <EditCard closeCallback = {closeEditScreen} /> : <></> }
+		</div>
+	);
+};
+
 
 Card.propTypes = {};
 
