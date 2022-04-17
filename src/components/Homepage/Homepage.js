@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Homepage.css';
 import CreateBoard from "../CreateBoard/CreateBoard";
+import Board from "../Board/Board";
 
 const Homepage = (props) => {
     const [state, setState] = useState("");
@@ -49,6 +50,7 @@ const Homepage = (props) => {
                     </div>
                 </div>
                 <div className="homepage-board">
+                    <Board columns={[]}/>
                 </div>
             </div>
         )
