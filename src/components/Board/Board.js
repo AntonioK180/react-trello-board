@@ -8,6 +8,7 @@ import {BoardService} from '../../services/BoardService';
 const Board = (props) => {
     const boardService = new BoardService();
     const [columnName, setColumnName] = useState("");
+    const [columns, setColumns] = useState([]);
 
     const addColumn = () => {
         const board = boardService.getCurrentBoard(props.users, props.loggedUser);
@@ -19,17 +20,9 @@ const Board = (props) => {
         };
         board.columns.push(newColumn);
 
+        setColumns([...board.columns, newColumn]);
+
         localStorage.setItem("users", JSON.stringify(props.users));
-    }
-
-    const showAddWindow = () => {
-        document.getElementById("add-window").style.display = "flex";
-        document.getElementById("btn-add-list").style.display = "none";
-    }
-
-    const removeAddWindow = () => {
-        document.getElementById("add-window").style.display = "none";
-        document.getElementById("btn-add-list").style.display = "flex";
     }
 
     return (
@@ -39,16 +32,17 @@ const Board = (props) => {
                 .map(column => <Column key={column.id} name={column.name} order={column.order}/>)}
 
             <div className="add-column">
-                <button id="btn-add-list" onClick={showAddWindow}>+ Add another list</button>
-                <div id="add-window">
-                    <input type="text"
-                           id="add-column-input"
-                           placeholder="Enter list title..."
-                           onChange={(event) => setColumnName(event.target.value)}/>
-                    <div className="buttons">
-                        <button className="btn-add-column" onClick={addColumn}>Add list</button>
-                        <button className="btn-exit-add-window" onClick={removeAddWindow}>X</button>
-                    </div>
+                <div>
+                    <form className="add-list">
+                        <input type="text"
+                            placeholder="Enter list title..."
+                            className='list-name-input'
+                            onChange={(event) => setColumnName(event.target.value)} />
+                        <div className='buttons-wrapper add-list-form'>
+                            <button className="save-button cursor-pointer dark-blue-bg" onClick={addColumn}>Add list</button>
+                            <span className='cross-icon cursor-pointer'></span>
+                        </div>
+                    </form>
                 </div>
             </div>
 
