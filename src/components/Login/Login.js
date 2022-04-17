@@ -1,14 +1,12 @@
 import React from 'react';
 import "./Login.css";
-import userContext from '../../UserContext';
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+//import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
 	const [username, setUsername] = useState("");
-	const user = useContext(userContext);
-	const navigate = useNavigate();
+	//const navigate = useNavigate();
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -20,9 +18,7 @@ const Login = () => {
 				localStorage.setItem("usernames", usernames);	
 			}
 		}
-
-		user.setUser(username);
-		navigate("/")
+		//navigate("/")
 	}
 
 	return (
