@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Card.css';
 
-const Card = () => (
+const Card = (props) => (
   <div className="Card">
     Card Component
   </div>
