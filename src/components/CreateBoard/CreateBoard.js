@@ -2,31 +2,29 @@ import './CreateBoard.css';
 import {useState} from "react";
 import { v4 as uuidv4 } from 'uuid'
 
-const CreateBoard = () => {
+const CreateBoard = (props) => {
     const [boardName, setBoardName] = useState("");
 
     const handleBoardSubmit = (event) => {
         event.preventDefault();
 
-        const curr_user = localStorage.getItem("logged_user");
-        const json_structure = JSON.parse(localStorage.getItem("users"));
-
-        const user = json_structure.find(user => user.username === curr_user);
+        const user = props.users.find(user => user.username === props.loggedUser);
+        const id = uuidv4();
         const boards = {
-            id: uuidv4(),
+            id: id,
             board_name: boardName,
             columns: []
         }
         user.boards.push(boards);
+        user.active_board = id;
 
 
-        localStorage.setItem("users", JSON.stringify(json_structure));
+        localStorage.setItem("users", JSON.stringify(props.users));
     }
 
     return (
         <div className="create-board">
-            <h1>Create Board</h1>
-            <form>
+            <form onSubmit={handleBoardSubmit}>
                 <label>
                     Board Name:
                     <input type="text" name="boardName"
@@ -36,7 +34,7 @@ const CreateBoard = () => {
                            }}
                            placeholder="Board name"/>
                 </label>
-                <button type="submit" onSubmit={handleBoardSubmit}>Create</button>
+                <button type="submit">Create</button>
             </form>
         </div>
     );
