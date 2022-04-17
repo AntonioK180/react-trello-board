@@ -1,7 +1,8 @@
 {
+  "logged_user": "<uername> (type string)",
   "users": [
     {
-      "name": "<name> (type string)",
+      "username": "<name> (type string)",
       "boards": [
         {
           "id": "<id> (type int)",
@@ -25,6 +26,12 @@
 
           "name": "<name> (type string)",
           "description": "<description> (type string) (optional)",
+          "color": "<color> (type string) (optional)",
+          "due_date": "<due_date> (type string) (optional)",
+          "members (optional)": [
+            "<username> (type string)",
+            "...more usernames"
+          ],
           "labels (optional)": [
             "<name> (type string)",
             "...more labels"
