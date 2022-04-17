@@ -2,20 +2,15 @@ import React, {useState} from 'react';
 import Column from '../Column/Column';
 import './Board.css';
 import {v4 as uuidv4} from 'uuid'
+import { BoardService } from '../../services/BoardService';
 
 
 const Board = (props) => {
+    const boardService = new BoardService();
     const [columnName, setColumnName] = useState("");
 
-    const getBoard = () => {
-        const user = props.users.find(user => user.username === props.loggedUser);
-        const activeBoard = user.active_board;
-
-        return user.boards.find(board => board.id === activeBoard);
-    }
-
     const addColumn = () => {
-        const board = getBoard();
+        const board = boardService.getCurrentBoard(props.users, props.loggedUser);
 
         const newColumn = {
             id: uuidv4(),
