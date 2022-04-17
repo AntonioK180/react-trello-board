@@ -6,41 +6,43 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-    const [username, setUsername] = useState("");
-    const user = useContext(userContext);
-    const navigate = useNavigate();
+	const [username, setUsername] = useState("");
+	const user = useContext(userContext);
+	const navigate = useNavigate();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const usernames = localStorage.getItem("usernames");
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const usernames = localStorage.getItem("usernames");
 
-        if (usernames == null || !usernames.includes(username)){
-            usernames.push(username); 
-            localStorage.setItem("usernames", usernames);
-        }
-        
-        user.setUser(username);
-        navigate("/")
-    }
+		if (usernames !== null) {
+			if (!usernames.includes(username)) {
+				usernames.push(username);
+				localStorage.setItem("usernames", usernames);	
+			}
+		}
 
-    return (
-            <div className="form">
-                <form onSubmit={handleSubmit}>
-                    <h1>Login</h1>
-                    <div className="input-container">
-                        <input type="text" name="uname" 
-                            value={username} 
-                            onChange={(event) => {
-                               setUsername(event.target.value);
-                            }} 
-                            placeholder="Enter your username"/>
-                    </div>
-                    <div className="button-container">
-                        <input type="submit" value="Login"/>
-                    </div>
-                </form>
-            </div>
-        )
-    }
+		user.setUser(username);
+		navigate("/")
+	}
+
+	return (
+		<div className="form">
+			<form onSubmit={handleSubmit}>
+				<h1>Login</h1>
+				<div className="input-container">
+					<input type="text" name="uname"
+						value={username}
+						onChange={(event) => {
+							setUsername(event.target.value);
+						}}
+						placeholder="Enter your username" />
+				</div>
+				<div className="button-container">
+					<input type="submit" value="Login" />
+				</div>
+			</form>
+		</div>
+	)
+}
 
 export default Login;
