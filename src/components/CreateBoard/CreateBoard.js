@@ -11,17 +11,12 @@ const CreateBoard = (props) => {
         return user.boards.find(board => board.board_name === param);
     }
 
-    const handleBoardSubmit = (event) => {
-        event.preventDefault();
-
+    const handleBoardSubmit = () => {
         const user = props.users.find(user => user.username === props.loggedUser);
 
         const board = getBoard(boardName);
-        console.log(boardName);
-        console.log(board);
         if (board) {
             user.active_board = board.id;
-            console.log(board.id);
             localStorage.setItem("users", JSON.stringify(props.users));
             return;
         }
@@ -38,18 +33,16 @@ const CreateBoard = (props) => {
     }
 
     return (
-        <div className="create-board">
-            <form onSubmit={handleBoardSubmit}>
-                <label>
-                    Board Name:
-                    <input type="text" name="boardName"
+        <div className="CreateBoard">
+            <form className='create-board-form' onSubmit={handleBoardSubmit}>
+                <label className='board-name-label'>Board Name:</label>
+                    <input type="text" name="boardName" className='board-name-input'
                            value={boardName}
                            onChange={(event) => {
                                setBoardName(event.target.value)
                            }}
                            placeholder="Board name"/>
-                </label>
-                <button type="submit">Create</button>
+                <button className='button-create-board cursor-pointer' type="submit">Create</button>
             </form>
         </div>
     );
