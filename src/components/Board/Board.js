@@ -1,23 +1,18 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Column from '../Column/Column';
 import './Board.css';
-import { v4 as uuidv4 } from 'uuid'
+import {v4 as uuidv4} from 'uuid'
+import {BoardService} from '../../services/BoardService';
 
 
 const Board = (props) => {
+    const boardService = new BoardService();
     const [columnName, setColumnName] = useState("");
     const [columns, setColumns] = useState([]);
     const [displayForm, setDisplayForm] = useState(false); 
 
-    const getBoard = () => {
-        const user = props.users.find(user => user.username === props.loggedUser);
-        const activeBoard = user.active_board;
-
-        return user.boards.find(board => board.id === activeBoard);
-    }
-
     const addColumn = () => {
-        const board = getBoard();
+        const board = boardService.getCurrentBoard(props.users, props.loggedUser);
 
         const newColumn = {
             id: uuidv4(),
@@ -37,7 +32,10 @@ const Board = (props) => {
 
     return (
         <div className="board">
-            {getBoard().columns.map(column => <Column key={column} name={column.name} order={column.order} />)}
+            {boardService.getCurrentBoard(props.users, props.loggedUser)
+                .columns
+                .map(column => <Column key={column.id} name={column.name} order={column.order}/>)}
+
             <div className="add-column">
                 { displayForm ?
                     <form className="add-list">

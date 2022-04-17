@@ -2,8 +2,10 @@ import {useState} from 'react';
 import './Homepage.css';
 import CreateBoard from "../CreateBoard/CreateBoard";
 import Board from "../Board/Board";
+import {BoardService} from "../../services/BoardService";
 
 const Homepage = (props) => {
+    const boardService = new BoardService();
     const [state, setState] = useState("");
     const [displayCreateBoard, setDisplayCreateBoard] = useState(false);
 
@@ -27,13 +29,6 @@ const Homepage = (props) => {
 
     const onClickCreateBoard = () => {
         setDisplayCreateBoard(!displayCreateBoard);
-    }
-
-    const getBoard = () => {
-        const user = props.users.find(user => user.username === props.loggedUser);
-        const activeBoard = user.active_board;
-
-        return user.boards.find(board => board.id === activeBoard);
     }
 
     return (
@@ -65,7 +60,7 @@ const Homepage = (props) => {
                         <h2>{props.username}</h2>
                     </div>
                 </div>
-                {getBoard() ?
+                {boardService.getCurrentBoard(props.users, props.loggedUser) ?
                     <div className="homepage-board">
                         <Board loggedUser={props.loggedUser}
                                users={props.users}/>
