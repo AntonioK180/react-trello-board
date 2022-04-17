@@ -18,3 +18,11 @@
 .action-icon-Dates::before {
 	content: "\1F553";
 }
+
+.action-icon-Attachmet::before {
+	content: "\1F4CE";
+}
+
+.action-icon-Cover::before {
+	content: "\1F4BB";
+}

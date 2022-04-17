@@ -12,8 +12,9 @@ textarea {
 }
 
 .EditCard {
+	position: relative;
 	overflow: auto;
-	margin: auto;
+	left: 25%;
 	margin-top: 3%;
 	background-color: white;
 	width: 50%;
@@ -112,4 +113,19 @@ textarea {
 	color: #5e6c84;
 	font-size: 12px;
 	margin-bottom: 4px;
+}
+
+.in-list-text {
+	margin-left: 4px;
+	color:rgb(109, 113, 124);
+}
+
+.list-name {
+	text-decoration: underline;
+}
+
+.close-popup {
+	position: absolute;
+	top: 0;
+	right: 12px;
 }

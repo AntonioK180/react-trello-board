@@ -5,7 +5,7 @@ const CardAction = (props) => {
 	let iconClass = 'action-icon-' + props.name;
 
 	return (	
-		<div className="CardAction">
+		<div className="CardAction cursor-pointer grey-bg">
 			<div className={iconClass}></div>
 			<div className='action-text'>{props.name}</div>
 		</div>
