@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "name": "<name> (type string)",
+      "boards": [
+        {
+          "id": "<id> (type int)",
+
+          "board_name": "<name> (type string)",
+          "columns": [
+            {
+              "id": "<id> (type int)",
+              "order": "<order> (type int)",
+
+              "name": "<name> (type string)"
+            },
+            {}
+          ]
+        },
+        {}
+      ],
+      "cards": [
+        {
+          "column_id": "<id> (type int)",
+
+          "name": "<name> (type string)",
+          "description": "<description> (type string) (optional)",
+          "labels (optional)": [
+            "<name> (type string)",
+            "...more labels"
+          ]
+        },
+        {}
+      ]
+    },
+    {}
+  ]
+}
+
+
