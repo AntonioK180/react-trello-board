@@ -4,16 +4,24 @@ import { useContext, useState } from 'react';
 import EditCard from '../EditCard/EditCard';
 
 const Card = (props) => {
-	const [shouldHide, setShouldHide] = useState(false);
+	const [displayEdit, setDisplayEdit] = useState(true);
 
 	const openEditScreen = () => {
-		setShouldHide(true);
+		setDisplayEdit(true);
 	}
 
+	const closeEditScreen = () => {
+		console.log("clicked!");
+		setDisplayEdit(false);
+		console.log(displayEdit);
+	}
+
+
 	return (
-		<div className="Card" onClick={openEditScreen}>
+		<div className="Card">
+			<p onClick={openEditScreen}> click me </p>
 			Card Component
-			{ shouldHide ? <EditCard /> : null }
+			{ displayEdit ? <EditCard closeCallback = {closeEditScreen} /> : <></> }
 		</div>
 	);
 };

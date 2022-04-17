@@ -2,17 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './LabelSelector.css';
 
-const LabelSelector = () => {
+const LabelSelector = (props) => {
 	const labels = [
 					{color: 'red', content: 'label One'}, 
 					{color: 'green', content: 'label Two'}, 
 					{color: 'yellow', content: 'label Three'}
 				];
 
-	const labelsMarkup = 1;
-
 	return (
 		<div className="LabelSelector">
+			<span onClick={props.closeCallback} className='close-popup cross-icon cursor-pointer'></span>
+
 			<div className='action-title'> Labels </div>
 
 			<h4 className='action-subtitle'>Labels</h4>

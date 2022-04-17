@@ -21,3 +21,7 @@
 	width: 32px;
 	background-color: red;
 }
+
+.MembersSelect > .close-popup {
+	z-index: 10;
+}

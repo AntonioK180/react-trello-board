@@ -1,1 +1,32 @@
-.DateSelector {}
+.DateSelector {
+	position: absolute;
+	background-color: white;
+	height: 450px;
+	width: 300px;
+	right: 6%;
+	z-index: 3;
+	border-radius: 3px;
+	box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+}
+
+.datepicker-input {
+	margin-left: 12px;
+    background-color: #0080ff;
+    padding: 6px;
+    font-family: "Roboto Mono",monospace;
+    color: #ffffff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+::-webkit-calendar-picker-indicator{
+    background-color: #ffffff;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.DateSelector > .close-popup {
+    z-index: 10;
+}

@@ -1,7 +1,7 @@
 .LabelSelector {
 	position: absolute;
 	background-color: white;
-	height: 550px;
+	height: 450px;
 	width: 300px;
 
 	right: 6%;
@@ -59,4 +59,8 @@
 
 .color-label-yellow {
 	background-color: yellow;
+}
+
+.LabelSelector > .close-popup {
+	z-index: 10;
 }

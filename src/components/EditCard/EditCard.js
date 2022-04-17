@@ -3,12 +3,14 @@ import { useState } from 'react';
 import CardAction from '../CardAction/CardAction';
 import LabelSelector from '../LabelSelector/LabelSelector';
 import MembersSelect from '../MembersSelect/MembersSelect';
+import DateSelector from '../DateSelector/DateSelector';
 import './EditCard.css';
 
 const EditCard = (props) => {
 	const [displaySave, setDisplaySave] = useState(false);
 	const [displayLabels, setDisplayLabels] = useState(false);
 	const [displayMembers, setDisplayMembers] = useState(false);
+	const [displayDate, setDisplayDate] = useState(false);
 
 	const currentLabels = ['green', 'red', 'yellow'];
 	const currentMembers = ['alex', 'balex'];
@@ -28,21 +30,42 @@ const EditCard = (props) => {
 	const showLabelSelect = () => {
 		setDisplayMembers(false);
 		setDisplayLabels(true);
+		setDisplayDate(false);
 	}
 
 	const showMembersSelect = () => {
 		setDisplayMembers(true);
 		setDisplayLabels(false);
+		setDisplayDate(false);
+	}
+
+	const showDateSelect = () => {
+		setDisplayMembers(false);
+		setDisplayLabels(false);
+		setDisplayDate(true);
+	}
+
+	const closeLabelSelector = () => {
+		setDisplayLabels(false);
+	}
+
+	const closeMemberSelect = () => {
+		setDisplayMembers(false);
+	}
+
+	const closeDateSelector = () => {
+		setDisplayDate(false);
 	}
 
 	return (
 		<>
-			{displayLabels ? <LabelSelector/> : <></> }
-			{displayMembers ? <MembersSelect/> : <></> }
-			{displayDate ? <MembersSelect/> : <></> }
+			{displayLabels ? <LabelSelector closeCallback = {closeLabelSelector}/> : <></> }
+			{displayMembers ? <MembersSelect closeCallback = {closeMemberSelect}/> : <></> }
+			{displayDate ? <DateSelector closeCallback = {closeDateSelector}/> : <></> }
+			
 			<div className="EditCard">
 				
-				<span className='close-popup cross-icon cursor-pointer'></span>
+				<span onClick={props.closeCallback} className='close-popup cross-icon cursor-pointer'></span>
 
 				<div className='title-bar'> 
 					<div className='title-bar-icon title-icon'></div>
@@ -92,9 +115,12 @@ const EditCard = (props) => {
 					<h4 className='actions-title'>Add to card</h4>
 					<a onClick={showMembersSelect}><CardAction name='Members'></CardAction></a>
 					<a onClick={showLabelSelect}><CardAction name='Labels'></CardAction></a>
-					<CardAction name='Dates'></CardAction>
+					<a onClick={showDateSelect}><CardAction name='Dates'></CardAction></a>
 					<CardAction name='Attachmet'></CardAction>
 					<CardAction name='Cover'></CardAction>
+					<CardAction name='Attachmet'></CardAction>
+					<CardAction name='Cover'></CardAction>
+
 				</aside>
 
 				<div className='card-description'>
