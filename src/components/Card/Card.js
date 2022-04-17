@@ -13,10 +13,7 @@ const Card = (props) => {
 	return (
 		<div className="Card" onClick={openEditScreen}>
 			Card Component
-			{ shouldHide ? 
-				  <EditCard /> :
-				  null
-			}
+			{ shouldHide ? <EditCard /> : null }
 		</div>
 	);
 };

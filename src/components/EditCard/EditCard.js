@@ -1,22 +1,34 @@
 import React from 'react';
+import { useState } from 'react';
 import './EditCard.css';
 
 const EditCard = (props) => {
+	const [displaySave, setDisplaySave] = useState(false);
+	
 	let title = 'Title';
-	let description = 'I am describing';
 
+	const onClickDescription = () => {
+		setDisplaySave(true);
+	}
+	
 	return (
 		<div className="EditCard">
 			<div className='title-bar'> 
-				<span className='title-bar-icon'></span>
+				<div className='title-bar-icon title-icon'></div>
 				{title}
 			</div>
 
 			<div className='card-description'>
-				<span className='description-title-icon'></span>
-				<h3 className='description-title'>Description</h3>
+				<h3 className='description-title'>
+					<div className='description-title-icon title-icon'></div>
+					Description
+				</h3>
 				
-				<textarea className='description-value' rows="4" cols="80" placeholder='Add a more detailed description…'></textarea>
+				<textarea onClick={onClickDescription} className='description-value' rows="4" cols="80" placeholder='Add a more detailed description…'></textarea>
+				{ displaySave ? <> 
+					<button className='save-button'>Save</button> 
+					<span></span>
+				</> : null }
 			</div>
 
 			<div className='content'> 
