@@ -1,11 +1,8 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import './Homepage.css';
-import userContext from '../../UserContext';
-import Board from '../Board/Board';
 
-const Homepage = () => {
+const Homepage = (props) => {
     const [state, setState] = useState("");
-    const user = useContext(userContext);
 
     const workspaceOnClick = () => {
         let workspace = document.getElementById('workspace-dropdown-content');
@@ -51,10 +48,11 @@ const Homepage = () => {
                     </div>
                     <div className="homepage-title-account">
                         <div className="account-icon"></div>
-                        <h2>{user.user}</h2>
+                        <h2>{props.username}</h2>
                     </div>
                 </div>
-                <Board columns={[]}/>
+                <div className="homepage-board">
+                </div>
             </div>
         )
 }
