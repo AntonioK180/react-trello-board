@@ -1,28 +1,39 @@
 import React from 'react';
 import "./Login.css";
+import userContext from '../../UserContext';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default class Login extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {
-            flag: false
-        };
-    }
 
-    handleSubmit(event){
+const Login = () => {
+    const [username, setUsername] = useState("");
+    const user = useContext(userContext);
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
         event.preventDefault();
-        localStorage.setItem('loggedIn', true);
-        this.setState({flag: !this.state.flag});
+        const usernames = localStorage.getItem("usernames");
+
+        if (usernames == null || !usernames.includes(username)){
+            usernames.push(username); 
+            localStorage.setItem("usernames", usernames);
+        }
+        
+        user.setUser(username);
+        navigate("/")
     }
 
-    render () {
-        return (
+    return (
             <div className="form">
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <h1>Login</h1>
                     <div className="input-container">
-                        <input type="text" name="uname" placeholder="Enter your username"/>
+                        <input type="text" name="uname" 
+                            value={username} 
+                            onChange={(event) => {
+                               setUsername(event.target.value);
+                            }} 
+                            placeholder="Enter your username"/>
                     </div>
                     <div className="button-container">
                         <input type="submit" value="Login"/>
@@ -32,5 +43,4 @@ export default class Login extends React.Component {
         )
     }
 
-    
-}
+export default Login;

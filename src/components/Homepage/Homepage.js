@@ -1,43 +1,33 @@
-import React from 'react';
+import { useState, useContext } from 'react';
 import './Homepage.css';
+import userContext from '../../UserContext';
 
-export default class Homepage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            user: props.user,
-            workspaces_displayed: false,
-            recents_displayed: false
-        }
+const Homepage = () => {
+    const [state, setState] = useState("");
+    const user = useContext(userContext);
 
-        this.workspaceOnClick = this.workspaceOnClick.bind(this);
-        this.recentOnClick = this.recentOnClick.bind(this);
-        this.createOnClick = this.createOnClick.bind(this);
-    }
-
-    workspaceOnClick() {
+    const workspaceOnClick = () => {
         let workspace = document.getElementById('workspace-dropdown-content');
 
-        this.state.workspaces_displayed ? 
+        state.workspaces_displayed ? 
             workspace.style.display = 'none' : workspace.style.display = 'block';
 
-        this.setState({workspaces_displayed: !this.state.workspaces_displayed});
+        setState({workspaces_displayed: !state.workspaces_displayed});
     }
 
-    recentOnClick() {
+    const recentOnClick = () => {
         let recent = document.getElementById('recent-dropdown-content');
 
-        this.state.recents_displayed ? 
+        state.recents_displayed ? 
             recent.style.display = 'none' : recent.style.display = 'block';
 
-        this.setState({recents_displayed: !this.state.recents_displayed});
+        setState({recents_displayed: !state.recents_displayed});
     }
     
-    createOnClick() {
+    const createOnClick = () => {
         // Create button must be implemented
     }
 
-    render() {
         return (
             <div className="homepage">
                 <div className="homepage-title">
@@ -45,25 +35,26 @@ export default class Homepage extends React.Component {
                         <div className="trello-icon"></div>
                         <h1>Trello</h1>
                         <div className="workspace-dropdown">
-                            <button onClick={this.workspaceOnClick} className="workspace-dropbtn">Workspaces</button>
+                            <button onClick={workspaceOnClick} className="workspace-dropbtn">Workspaces</button>
                             <div id="workspace-dropdown-content">
                                 {/* Component for workspace-dropdown-content must be created */}
                             </div>
                         </div>
                         <div className="recent-dropdown">
-                            <button onClick={this.recentOnClick} className="recent-dropbtn">Recent</button>
+                            <button onClick={recentOnClick} className="recent-dropbtn">Recent</button>
                             <div id="recent-dropdown-content">
                                 {/* Component for recent-dropdown-content must be created */}
                             </div>
                         </div>
-                        <button id="create-btn" onClick={this.createOnClick}>Create</button>
+                        <button id="create-btn" onClick={createOnClick}>Create</button>
                     </div>
                     <div className="homepage-title-account">
                         <div className="account-icon"></div>
-                        <h2>{this.state.user.username}</h2>
+                        <h2>{user.user}</h2>
                     </div>
                 </div>
             </div>
         )
-    }
 }
+
+export default Homepage;

@@ -3,31 +3,23 @@ import Login from './components/Login/Login';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from './components/Homepage/Homepage';
 import React from 'react';
+import userContext from './UserContext';
+import { useState } from 'react';
 
 
-class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			loggedIn: false,
-			user: {
-				username: "username"
-			}
-		}
-	}
+const App = () => {
+	const [user, setUser] = useState("");
 
-	render() {	
-		return (
+	return (
+		<userContext.Provider value={{user: user, setUser: setUser}}>
 			<BrowserRouter>
 				<Routes>
-					{this.state.loggedIn ? 
-						<Route path="/" element={<Homepage user={this.state.user}/>}></Route>:							
-						<Route path="/" element={<Login/>}></Route>
-					}
+					<Route path="/" element={<Homepage/>}></Route>							
+					<Route path="login" element={<Login/>}></Route>
 				</Routes>
 			</BrowserRouter>
-		)
-	}
+		</userContext.Provider>
+	)
 }
 
 export default App;
