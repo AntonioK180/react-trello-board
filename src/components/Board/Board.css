@@ -34,3 +34,22 @@
 .add-list-form > .save-button {
     margin-left: 0;
 } 
+
+.no-form-wrapper {
+    display: flex;
+    line-height: 0;
+    width: 272px;
+    align-items: center;
+    background-color: #ffffff3d;
+    margin: 20px 20px;
+    border-radius: 3px;
+    height: auto;
+    min-height: 32px;
+    padding: 6px 8px;
+    color: white;
+    font-weight: 500;
+}
+
+.plus-icon-add-list::before {
+    content: "\FF0B";
+}
