@@ -23,9 +23,9 @@
 
 .homepage-title h1 {
     color: white;
+    margin: auto;
+    top: 5px;
     position: relative;
-    bottom: 20%;
-    left: 10px;
 }
 
 #workspace-dropdown-content {
@@ -91,7 +91,7 @@
 }
 
 .homepage-title-account {
-    height: 5.7vh;
+    height: 6.4vh;
     display: flex;
     justify-content: flex-end;
     position: fixed;
@@ -100,9 +100,8 @@
 }
 
 .account-icon {
-    margin-top: 3px;
-    margin-right: 15px; 
-    width: 55px;
+    margin-right: 10px;
+    width: 67px;
     height: 100%;
     background-image: url("../../../public/account_icon.png");
     background-size: cover;
@@ -113,4 +112,26 @@
     margin-right: 15px;
     position: relative;
     bottom: 3px;    
+}
+
+.search-icon {
+    background-image: url("../../../public/icons8-search-24.png");
+    width: 24px;
+    height: 24px;
+    margin:auto;
+}
+
+.search-bar {
+    margin: 10px;
+    border-radius: 5px;
+    margin-right: 1.5em;
+    display: flex;
+    background-color: white;
+}
+
+#search-input {
+    font-size: 20px;
+    outline: none;
+    border: none;
+    margin: auto;
 }
