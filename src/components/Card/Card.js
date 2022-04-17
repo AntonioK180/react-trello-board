@@ -11,9 +11,7 @@ const Card = (props) => {
 	}
 
 	const closeEditScreen = () => {
-		console.log("clicked!");
 		setDisplayEdit(false);
-		console.log(displayEdit);
 	}
 
 
