@@ -12,6 +12,7 @@ textarea {
 }
 
 .EditCard {
+	overflow: auto;
 	margin: auto;
 	margin-top: 3%;
 	background-color: white;
@@ -32,6 +33,7 @@ textarea {
     margin: -4px -8px;
     min-height: 24px;
     padding: 4px 8px;
+	margin-bottom: 28px;
 }
 
 .description-title {
@@ -104,4 +106,10 @@ textarea {
 	margin-top: -80px;
 	width: 20%;
 	overflow: hidden;
+}
+
+.actions-title {
+	color: #5e6c84;
+	font-size: 12px;
+	margin-bottom: 4px;
 }

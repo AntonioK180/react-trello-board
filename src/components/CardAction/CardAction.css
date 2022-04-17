@@ -1,11 +1,20 @@
 .CardAction {
 	background-color: #EAECF0;
 	text-align: start;
+	margin-bottom: 8px;
 	border-radius: 3px;
 	padding: 6px 12px;
 	display: flex;
 }
 
-.action-icon::before {
+.action-icon-Members::before {
 	content: "\1F464";
+}
+
+.action-icon-Labels::before {
+	content: "\1F9F2";
+}
+
+.action-icon-Dates::before {
+	content: "\1F553";
 }

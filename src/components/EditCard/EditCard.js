@@ -30,6 +30,14 @@ const EditCard = (props) => {
 			</h3>
 
 			<aside className='actions-content'> 
+				<h4 className='actions-title'>Add to card</h4>
+				<CardAction name='Members'></CardAction>
+				<CardAction name='Labels'></CardAction>
+				<CardAction name='Dates'></CardAction>
+				<CardAction></CardAction>
+				<CardAction></CardAction>
+				<CardAction></CardAction>
+				<CardAction></CardAction>
 				<CardAction></CardAction>
 			</aside>
 
