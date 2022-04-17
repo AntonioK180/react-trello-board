@@ -5,22 +5,24 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 
 const App = () => {
-	return (
-		<>
-			<BrowserRouter>
-				<Routes>
-                    <Route path="/*" element={<Login/>} />
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/*" element={<Login/>}/>
                     {localStorage.getItem('logged_user') ?
-						<>
-							<Route path="/home" element={<Homepage/>} />
-						</>
+                        <>
+                            <Route path="/home" element={<Homepage
+                                loggedUser={localStorage.getItem("logged_user")}
+                                users={JSON.parse(localStorage.getItem("users"))}/>}/>
+                        </>
                         :
                         <></>
                     }
-				</Routes>
-			</BrowserRouter>
-		</>
-	)
+                </Routes>
+            </BrowserRouter>
+        </>
+    )
 }
 
 export default App;
