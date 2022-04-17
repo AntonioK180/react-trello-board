@@ -1,22 +1,18 @@
 import './CreateBoard.css';
 import {useState} from "react";
 import { v4 as uuidv4 } from 'uuid'
+import {BoardService} from "../../services/BoardService";
 
 const CreateBoard = (props) => {
+    const boardService = new BoardService();
     const [boardName, setBoardName] = useState("");
 
-    const getBoard = (param) => {
-        const user = props.users.find(user => user.username === props.loggedUser);
+    const handleBoardSubmit = (event) => {
+        const user = boardService.getCurrentUser(props.users, props.loggedUser);
 
-        return user.boards.find(board => board.board_name === param);
-    }
-
-    const handleBoardSubmit = () => {
-        const user = props.users.find(user => user.username === props.loggedUser);
-
-        const board = getBoard(boardName);
+        const board = boardService.getCurrentBoard(props.users, props.loggedUser, boardName);
         if (board) {
-            user.active_board = board.id;
+            user.active_board = board.board_name;
             localStorage.setItem("users", JSON.stringify(props.users));
             return;
         }
@@ -27,7 +23,7 @@ const CreateBoard = (props) => {
             columns: []
         }
         user.boards.push(newBoard);
-        user.active_board = newBoard.id;
+        user.active_board = newBoard.board_name;
 
         localStorage.setItem("users", JSON.stringify(props.users));
     }
