@@ -2,6 +2,7 @@ import './App.css';
 import Login from './components/Login/Login';
 import Homepage from './components/Homepage/Homepage';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { PortalDiv } from './components/Portal/Portal';
 
 
 const App = () => {
@@ -21,6 +22,8 @@ const App = () => {
                     }
                 </Routes>
             </BrowserRouter>
+            <PortalDiv></PortalDiv>
+
         </>
     )
 }

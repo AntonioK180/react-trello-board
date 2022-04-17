@@ -1,1 +1,24 @@
-.Card {}
+.Card {
+	box-sizing: border-box;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 272px;
+}
+
+.card-body {
+	overflow: hidden;
+    padding: 6px 8px 2px;
+    position: relative;
+
+	background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 #091e4240;
+    margin-bottom: 8px;
+    max-width: 300px;
+    min-height: 20px;
+    position: relative;
+    text-decoration: none;
+    z-index: 10;
+}
