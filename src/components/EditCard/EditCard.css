@@ -1,0 +1,10 @@
+.EditCard {
+	margin: auto;
+	background-color: white;
+	width: 50%;
+	border-radius: 10px;
+}
+
+.title-bar-icon::before {
+	content: "\e912";
+}
