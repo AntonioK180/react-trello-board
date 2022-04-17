@@ -17,8 +17,7 @@ const Card = (props) => {
 
 	return (
 		<div className="Card">
-			<p onClick={openEditScreen}> click me </p>
-			Card Component
+			<div className='card-body cursor-pointer' onClick={openEditScreen}> {props.name} </div>
 			{ displayEdit ? <EditCard closeCallback = {closeEditScreen} /> : <></> }
 		</div>
 	);

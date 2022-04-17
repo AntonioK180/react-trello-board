@@ -15,21 +15,12 @@ const Column = (props) => {
 		setCards([...cards, card]);
 	}
 
-	const showAddWindow = () => {
-		document.getElementById("add-card-window").style.display = "flex";
-		document.getElementById("btn-add-card").style.display = "none";
-	}
-
-	const hideAddWindow = () => {
-		document.getElementById("add-card-window").style.display = "none";
-		document.getElementById("btn-add-card").style.display = "flex";
-	}
-
 	return (
 		<div className="Column">
-			<h1>{props.name}</h1>
-			{cards.map((card) => <Card key={card} info={card} />)}
-			<button id="btn-add-card" onClick={showAddWindow}>+ Add a card</button>
+			<div className='column-header'>
+				<h1 className='single-column-name'>{props.name}</h1>
+			</div>
+			{cards.map((card) => <Card key={card} name={card.name} />)}
 			<div id="add-card-window">
 				<input type="text"
 					id="add-card-input"
@@ -37,7 +28,6 @@ const Column = (props) => {
 					onChange={(event) => setCardName(event.target.value)} />
 				<div className="buttons">
 					<button className="btn-add-card" onClick={addCard}>Add card</button>
-					<button className="btn-exit-add-window" onClick={hideAddWindow}>X</button>
 				</div>
 			</div>
 		</div>
