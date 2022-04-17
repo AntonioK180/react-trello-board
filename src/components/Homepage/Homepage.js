@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Homepage.css';
+import CreateBoard from "../CreateBoard/CreateBoard";
 
 const Homepage = (props) => {
     const [state, setState] = useState("");
@@ -21,10 +22,6 @@ const Homepage = (props) => {
 
         setState({recents_displayed: !state.recents_displayed});
     }
-    
-    const createOnClick = () => {
-        // Create button must be implemented
-    }
 
         return (
             <div className="homepage">
@@ -44,7 +41,7 @@ const Homepage = (props) => {
                                 {/* Component for recent-dropdown-content must be created */}
                             </div>
                         </div>
-                        <button id="create-btn" onClick={createOnClick}>Create</button>
+                        <button id="create-btn" onClick={CreateBoard}>Create</button>
                     </div>
                     <div className="homepage-title-account">
                         <div className="account-icon"></div>
