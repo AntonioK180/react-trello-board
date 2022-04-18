@@ -1,3 +1,5 @@
+import {v4 as uuidv4} from "uuid";
+
 export class BoardService {
     getCurrentUser(users, loggedUser) {
         return users.find(user => user.username === loggedUser);
@@ -21,4 +23,31 @@ export class BoardService {
         user.recent_boards.push(user.active_board);
         localStorage.setItem("users", JSON.stringify(users));
     };
+
+    handleBoardsOnClick(users, loggedUser, boardName) {
+        const user = this.getCurrentUser(users, loggedUser);
+        const board = this.getCurrentBoard(users, loggedUser, boardName);
+
+        this.configureActiveBoard(users, user, board);
+
+        window.location.href = "/home";
+    }
+
+    handleBoardSubmit(users, loggedUser, boardName) {
+        const user = this.getCurrentUser(users, loggedUser);
+
+        const board = this.getCurrentBoard(users, loggedUser, boardName);
+        if (board) {
+            this.configureActiveBoard(users, user, board);
+            return;
+        }
+
+        const newBoard = {
+            id: uuidv4(),
+            board_name: boardName,
+            columns: []
+        }
+        user.boards.push(newBoard);
+        this.configureActiveBoard(users, user, newBoard);
+    }
 }
