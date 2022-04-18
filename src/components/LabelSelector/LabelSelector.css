@@ -1,0 +1,66 @@
+.LabelSelector {
+	position: absolute;
+	background-color: white;
+	height: 450px;
+	width: 300px;
+
+	right: 6%;
+	z-index: 3;
+	border-radius: 3px;
+	box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+}
+
+.action-title {
+	border-bottom: 1px solid #091e4221;
+    color: #5e6c84;
+    line-height: 40px;
+    margin: 0 12px;
+    overflow: hidden;
+    padding: 0 32px;
+    position: relative;
+    text-overflow: ellipsis;
+}
+
+.action-subtitle {
+	color: #5e6c84;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    margin-top: 16px;
+	margin-left: 12px;
+}
+
+.single-label {
+	width: 85%;
+	margin: auto;
+	display: flex;
+	border-radius: 3px;
+    font-weight: 700;
+    min-height: 20px;
+    padding: 6px 12px;
+    position: relative;
+    transition: padding 85ms,margin 85ms,box-shadow 85ms;
+	margin-top: 4px;
+}
+
+.pencil-icon::before {
+	content: "\270E";
+	display: flex;
+	margin-right: 6px;
+}
+
+.color-label-green {
+	background-color: green;
+}
+
+.color-label-red {
+	background-color: red;
+}
+
+.color-label-yellow {
+	background-color: yellow;
+}
+
+.LabelSelector > .close-popup {
+	z-index: 10;
+}

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import "./Login.css"
-import { useNavigate } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
     let navigate = useNavigate();
@@ -18,7 +18,7 @@ const Login = () => {
 
     }, []);
 
-    const handleSubmit = (event) => {
+    const handleLoginSubmit = (event) => {
         event.preventDefault();
 
         // get the users massive
@@ -27,17 +27,24 @@ const Login = () => {
         if (users !== null) {
             // if user don't exist - add the new user to the existing users
             if (!users.includes(username)) {
-                users.push(username);
+                users.push({
+                    username: username, active_board: null,
+                    recent_boards: [], boards: [], cards: []
+                });
                 localStorage.setItem("users", JSON.stringify(users));
             }
         } else {
             // if there isn't users array - create the array of users
-            const users_json = [username];
+            const users_json = [{
+                username: username, active_board: null,
+                recent_boards: [], boards: [], cards: []
+            }];
             localStorage.setItem("users", JSON.stringify(users_json));
         }
 
         // set the logged-in user
         localStorage.setItem("logged_user", username);
+
 
         window.location.href = "/home";
         navigate("/home");
@@ -45,7 +52,7 @@ const Login = () => {
 
     return (
         <div className="form">
-            <form onSubmit={handleSubmit}>
+            <form className='login-form' onSubmit={handleLoginSubmit}>
                 <h1>Login</h1>
                 <div className="input-container">
                     <input type="text" name="uname"
