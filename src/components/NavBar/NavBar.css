@@ -56,6 +56,7 @@
     left: 53px;
     top: 10px;
     display: none;
+    flex-direction: column;
 }
 
 .recent-dropbtn {
@@ -113,4 +114,8 @@
     margin-right: 15px;
     position: relative;
     bottom: 3px;
+}
+
+.btn-recent-board {
+
 }
