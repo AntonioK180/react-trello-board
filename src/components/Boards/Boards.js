@@ -23,11 +23,8 @@ const Boards = (props) => {
     function handleBoardsOnClick(boardName) {
         const user = props.users.find(user => user.username === props.loggedUser);
         const board = getBoard(boardName);
-        console.log(board);
 
         user.active_board = board.board_name;
-        console.log(user.active_board)
-        console.log(props.users);
         localStorage.setItem("users", JSON.stringify(props.users));
 
         window.location.href = "/home";
@@ -57,7 +54,6 @@ const Boards = (props) => {
     }
 
     const displaySingleBoard = (board) => {
-        console.log(board);
         return (
             <div className="board" onClick={() => handleBoardsOnClick(board.board_name)}>
                 <h2>{board.board_name}</h2>
