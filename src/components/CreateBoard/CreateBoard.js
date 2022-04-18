@@ -9,7 +9,7 @@ const CreateBoard = (props) => {
     return (
         <div className="CreateBoard">
             <form className='create-board-form' onSubmit={() => boardService
-                .handleBoardSubmit(props.users, props.loggedUser)}>
+                .handleBoardSubmit(props.users, props.loggedUser, boardName)}>
                 <label className='board-name-label'>Board Name:</label>
                 <input type="text" name="boardName" className='board-name-input'
                        required

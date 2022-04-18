@@ -28,7 +28,7 @@ const Boards = (props) => {
             {getBoards().map(board => displaySingleBoard(board))}
             <div className="add-board">
                 <form onSubmit={() => boardService
-                    .handleBoardSubmit(props.users, props.loggedUser)}>
+                    .handleBoardSubmit(props.users, props.loggedUser, boardName)}>
                     <label>
                         Board Name:
                         <input type="text" name="boardName"
