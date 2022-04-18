@@ -1,6 +1,5 @@
 import './NavBar.css';
 import {useState} from "react";
-import {useNavigate} from 'react-router-dom';
 import CreateBoard from "../CreateBoard/CreateBoard";
 
 const NavBar = (props) => {
@@ -30,20 +29,24 @@ const NavBar = (props) => {
                     <div className="homepage-title-main">
                         <div className="trello-icon"></div>
                         <h1>Trello</h1>
-                        <div className="boards-dropdown">
-                            <button onClick={() => window.location.href="/boards"} className="boards-dropbtn">Boards</button>
-                        </div>
-                        <div className="recent-dropdown">
-                            <button onClick={recentOnClick} className="recent-dropbtn">Recent</button>
-                            <div id="recent-dropdown-content">
-                                {/* Component for recent-dropdown-content must be created */}
-                            </div>
-                        </div>
-                        <button id="create-btn" onClick={onClickCreateBoard}>Create</button>
-                    </div>
-                    <div className="homepage-title-account">
-                        <div className="account-icon"></div>
-                        <h2>{props.username}</h2>
+                        {props.loggedUser ?
+                            <>
+                                <div className="boards-dropdown">
+                                    <button onClick={() => window.location.href="/boards"} className="boards-dropbtn">Boards</button>
+                                </div>
+                                <div className="recent-dropdown">
+                                    <button onClick={recentOnClick} className="recent-dropbtn">Recent</button>
+                                    <div id="recent-dropdown-content">
+                                        {/* Component for recent-dropdown-content must be created */}
+                                    </div>
+                                </div>
+                                <button id="create-btn" onClick={onClickCreateBoard}>Create</button>
+                                <div className="homepage-title-account">
+                                    <div className="account-icon"></div>
+                                    <h2>{props.username}</h2>
+                                </div>
+                            </>
+                            : <></>}
                     </div>
                 </div>
             </div>

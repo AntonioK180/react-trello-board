@@ -7,25 +7,22 @@ const CreateBoard = (props) => {
     const boardService = new BoardService();
     const [boardName, setBoardName] = useState("");
 
-    const handleBoardSubmit = (event) => {
+    const handleBoardSubmit = () => {
         const user = boardService.getCurrentUser(props.users, props.loggedUser);
 
         const board = boardService.getCurrentBoard(props.users, props.loggedUser, boardName);
         if (board) {
-            user.active_board = board.board_name;
-            localStorage.setItem("users", JSON.stringify(props.users));
+            boardService.configureActiveBoard(props.users, user, board);
             return;
         }
 
         const newBoard = {
             id: uuidv4(),
             board_name: boardName,
-            columns: []
+            columns: [],
         }
         user.boards.push(newBoard);
-        user.active_board = newBoard.board_name;
-
-        localStorage.setItem("users", JSON.stringify(props.users));
+        boardService.configureActiveBoard(props.users, user, newBoard);
     }
 
     return (

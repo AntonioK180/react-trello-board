@@ -2,8 +2,10 @@ import './Boards.css';
 import {useNavigate} from 'react-router-dom'
 import {v4 as uuidv4} from "uuid";
 import {useState} from "react";
+import {BoardService} from "../../services/BoardService";
 
 const Boards = (props) => {
+    const boardService = new BoardService();
     let navigate = useNavigate();
     const [boardName, setBoardName] = useState("");
 
@@ -24,8 +26,7 @@ const Boards = (props) => {
         const user = props.users.find(user => user.username === props.loggedUser);
         const board = getBoard(boardName);
 
-        user.active_board = board.board_name;
-        localStorage.setItem("users", JSON.stringify(props.users));
+        boardService.configureActiveBoard(props.users, user, board);
 
         window.location.href = "/home";
         navigate("/home");
@@ -37,8 +38,7 @@ const Boards = (props) => {
 
         const board = getBoard(boardName);
         if (board) {
-            user.active_board = board.board_name;
-            localStorage.setItem("users", JSON.stringify(props.users));
+            boardService.configureActiveBoard(props.users, user, board);
             return;
         }
 
@@ -48,9 +48,8 @@ const Boards = (props) => {
             columns: []
         }
         user.boards.push(newBoard);
-        user.active_board = newBoard.board_name;
 
-        localStorage.setItem("users", JSON.stringify(props.users));
+        boardService.configureActiveBoard(props.users, user, newBoard);
     }
 
     const displaySingleBoard = (board) => {
