@@ -7,13 +7,11 @@
       "boards": [
         {
           "id": "<id> (type int)",
-
           "board_name": "<name> (type string)",
           "columns": [
             {
               "id": "<id> (type int)",
               "order": "<order> (type int)",
-
               "name": "<name> (type string)"
             },
             {}
@@ -21,10 +19,15 @@
         },
         {}
       ],
+      "recent_boards": [
+        {
+          "board_name": "<name> (type string)"
+        },
+        {}
+      ],
       "cards": [
         {
           "column_id": "<id> (type int)",
-
           "name": "<name> (type string)",
           "description": "<description> (type string) (optional)",
           "color": "<color> (type string) (optional)",
