@@ -1,19 +1,11 @@
 import './NavBar.css';
 import {useState} from "react";
+import {useNavigate} from 'react-router-dom';
 import CreateBoard from "../CreateBoard/CreateBoard";
 
 const NavBar = (props) => {
     const [state, setState] = useState("");
     const [displayCreateBoard, setDisplayCreateBoard] = useState(false);
-
-    const boardsOnClick = () => {
-        let boards = document.getElementById('boards-dropdown-content');
-
-        state.boards_displayed ?
-            boards.style.display = 'none' : boards.style.display = 'block';
-
-        setState({boards_displayed: !state.boards_displayed});
-    }
 
     const recentOnClick = () => {
         let recent = document.getElementById('recent-dropdown-content');
@@ -39,10 +31,7 @@ const NavBar = (props) => {
                         <div className="trello-icon"></div>
                         <h1>Trello</h1>
                         <div className="boards-dropdown">
-                            <button onClick={boardsOnClick} className="boards-dropbtn">Boards</button>
-                            <div id="boards-dropdown-content">
-                                {/* Component for boards-dropdown-content must be created */}
-                            </div>
+                            <button onClick={() => window.location.href="/boards"} className="boards-dropbtn">Boards</button>
                         </div>
                         <div className="recent-dropdown">
                             <button onClick={recentOnClick} className="recent-dropbtn">Recent</button>
