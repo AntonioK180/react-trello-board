@@ -2,6 +2,7 @@ import {useState} from 'react';
 import Card from '../Card/Card';
 import './Column.css';
 import {BoardService} from "../../services/BoardService";
+import {v4 as uuidv4} from "uuid";
 
 const Column = (props) => {
     const boardService = new BoardService();
@@ -34,7 +35,7 @@ const Column = (props) => {
             </div>
             {boardService.getCurrentUser(props.users, props.loggedUser).cards
                 .filter((card) => card.column_id === props.id)
-                .map((card) => <Card key={card.column_id} name={card.name}/>)}
+                .map((card) => <Card key={uuidv4()} name={card.name}/>)}
             <form onSubmit={addCard} className="add-card-window">
                 <input type="text"
                        required

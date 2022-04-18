@@ -116,6 +116,6 @@
     bottom: 3px;
 }
 
-.btn-recent-board {
-
+.hide {
+    display: none;
 }

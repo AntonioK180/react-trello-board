@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Column from '../Column/Column';
 import './Board.css';
-import {v4 as uuidv4} from 'uuid'
-import {BoardService} from '../../services/BoardService';
+import { v4 as uuidv4 } from 'uuid'
+import { BoardService } from '../../services/BoardService';
 
 
 const Board = (props) => {
@@ -39,18 +39,19 @@ const Board = (props) => {
             {boardService.getCurrentBoard(props.users, props.loggedUser)
                 .columns
                 .map(column => <Column
+                    key={uuidv4()}
                     id={column.id} name={column.name}
                     order={column.order}
-                    users={props.users} loggedUser={props.loggedUser}/>)}
+                    users={props.users} loggedUser={props.loggedUser} />)}
 
             <div className="add-column">
                 {displayForm ?
                     <form className="add-list" onSubmit={addColumn}>
                         <input type="text"
-                               required
-                               placeholder="Enter list title..."
-                               className='list-name-input'
-                               onChange={(event) => setColumnName(event.target.value)}/>
+                            required
+                            placeholder="Enter list title..."
+                            className='list-name-input'
+                            onChange={(event) => setColumnName(event.target.value)} />
                         <div className='buttons-wrapper add-list-form'>
                             <button className="save-button cursor-pointer dark-blue-bg">Add list
                             </button>
