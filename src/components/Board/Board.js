@@ -9,9 +9,14 @@ const Board = (props) => {
     const boardService = new BoardService();
     const [columnName, setColumnName] = useState("");
     const [columns, setColumns] = useState([]);
+    const [displayForm, setDisplayForm] = useState(false);
 
     const addColumn = () => {
         const board = boardService.getCurrentBoard(props.users, props.loggedUser);
+
+        if (board.columns.find(column => column.name === columnName)) {
+            return;
+        }
 
         const newColumn = {
             id: uuidv4(),
@@ -25,30 +30,40 @@ const Board = (props) => {
         localStorage.setItem("users", JSON.stringify(props.users));
     }
 
+    const toggleAddListForm = () => {
+        setDisplayForm(!displayForm);
+    }
+
     return (
         <div className="board">
             {boardService.getCurrentBoard(props.users, props.loggedUser)
                 .columns
-                .map(column => <Column key={column.id} name={column.name} order={column.order}/>)}
+                .map(column => <Column
+                    id={column.id} name={column.name}
+                    order={column.order}
+                    users={props.users} loggedUser={props.loggedUser}/>)}
 
             <div className="add-column">
-                <div>
+                {displayForm ?
                     <form className="add-list" onSubmit={addColumn}>
                         <input type="text"
                                required
-                               value={columnName}
                                placeholder="Enter list title..."
                                className='list-name-input'
-                               onChange={(event) => {
-                                   setColumnName(event.target.value)
-                               }}/>
+                               onChange={(event) => setColumnName(event.target.value)}/>
                         <div className='buttons-wrapper add-list-form'>
                             <button className="save-button cursor-pointer dark-blue-bg">Add list
                             </button>
-                            <span className='cross-icon cursor-pointer'></span>
+                            <span onClick={toggleAddListForm} className='cross-icon cursor-pointer'></span>
                         </div>
                     </form>
-                </div>
+                    :
+                    <div onClick={toggleAddListForm} className='no-form-wrapper cursor-pointer light-grey-bg'>
+                        <span className='plus-icon-add-list'></span>
+                        <span>Add another list</span>
+                    </div>
+
+                }
             </div>
 
         </div>

@@ -63,6 +63,9 @@ const EditCard = (props) => {
 			{displayMembers ? <MembersSelect closeCallback = {closeMemberSelect}/> : <></> }
 			{displayDate ? <DateSelector closeCallback = {closeDateSelector}/> : <></> }
 			
+			<div className='window-overlay'>a</div>
+
+
 			<div className="EditCard">
 				
 				<span onClick={props.closeCallback} className='close-popup cross-icon cursor-pointer'></span>
@@ -135,7 +138,7 @@ const EditCard = (props) => {
 				<div className='side-menu'>
 					
 				</div>
-			</div> 
+			</div>
 		</>
 	);
 };

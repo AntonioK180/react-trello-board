@@ -1,46 +1,51 @@
 import {useState} from 'react';
 import Card from '../Card/Card';
 import './Column.css';
+import {BoardService} from "../../services/BoardService";
 
 const Column = (props) => {
+    const boardService = new BoardService();
     const [cardName, setCardName] = useState("");
-    const [cards, setCards] = useState([]);
+    const [cards, setCards] = useState([{}]);
 
     const addCard = () => {
+        const user = boardService.getCurrentUser(props.users, props.loggedUser);
+
         const card = {
-            key: cards.length,
-            name: cardName
-        }
+            column_id: props.id,
+            name: cardName,
+            description: "",
+            color: "",
+            due_date: "",
+            members: [],
+            labels: [],
+        };
 
         setCards([...cards, card]);
-    }
 
-    const showAddWindow = () => {
-        document.getElementById("add-card-window").style.display = "flex";
-        document.getElementById("btn-add-card").style.display = "none";
-    }
-
-    const hideAddWindow = () => {
-        document.getElementById("add-card-window").style.display = "none";
-        document.getElementById("btn-add-card").style.display = "flex";
+        user.cards.push(card);
+        localStorage.setItem('users', JSON.stringify(props.users));
     }
 
     return (
         <div className="Column">
-            <h1>{props.name}</h1>
-            {cards.map((card) => <Card info={card}/>)}
-            <button id="btn-add-card" onClick={showAddWindow}>+ Add a card</button>
-            <div id="add-card-window">
+            <div className='column-header'>
+                <h1 className='single-column-name'>{props.name}</h1>
+            </div>
+            {boardService.getCurrentUser(props.users, props.loggedUser).cards
+                .filter((card) => card.column_id === props.id)
+                .map((card) => <Card key={card.column_id} name={card.name}/>)}
+            <form onSubmit={addCard} className="add-card-window">
                 <input type="text"
                        required
+                       className='add-card-field'
                        id="add-card-input"
                        placeholder="Enter card title..."
                        onChange={(event) => setCardName(event.target.value)}/>
                 <div className="buttons">
-                    <button className="btn-add-card" onClick={addCard}>Add card</button>
-                    <button className="btn-exit-add-window" onClick={hideAddWindow}>X</button>
+                    <button type='submit' className="btn-add-card">Add card</button>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }

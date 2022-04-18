@@ -1,9 +1,42 @@
 .Column {
-    display:flex;
-    flex-direction: column;
+    margin: 20px 20px;
+    padding: 8px 12px;
     background-color: #ebecf0;
-    border-radius: 5px;
-    margin-left: 20px;
-    margin-top: 20px;
-    
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    position: relative;
+    white-space: normal;
+}
+
+.single-column-name {
+    font-size: 18px;
+    color: #5e6c84;
+    line-height: 40px;
+    margin: 0 12px;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+}
+
+.add-card-window {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-card-field {
+    display: flex;
+    border-radius: 3px;
+    color: #5e6c84;
+    display: block;
+    padding: 4px 8px;
+    position: relative;
+    text-decoration: none;
+    user-select: none;
+}
+
+.btn-add-card {
+    height: 28px;
 }
