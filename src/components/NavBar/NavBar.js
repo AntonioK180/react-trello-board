@@ -39,15 +39,20 @@ const NavBar = (props) => {
                         {props.loggedUser ?
                             <>
                                 <div className="boards-dropdown">
-                                    <button onClick={() => window.location.href="/boards"} className="boards-dropbtn">Boards</button>
+                                    <button onClick={() => window.location.href = "/boards"}
+                                            className="boards-dropbtn">Boards
+                                    </button>
                                 </div>
                                 <div className="recent-dropdown">
                                     <button onClick={recentOnClick} className="recent-dropbtn">Recent</button>
                                     <div id="recent-dropdown-content">
-                                        {fetchRecentBoards().map(board => 
-                                            <button className="btn-recent-board" key={board} 
-                                            onClick={() => 
-                                            boardService.handleBoardsOnClick(props.users, props.loggedUser, board)}>{board}</button>)}
+                                        {fetchRecentBoards().map(board =>
+                                            <button className="btn-recent-board" key={board}
+                                                    onClick={() =>
+                                                        boardService.handleBoardsOnClick(props.users,
+                                                            props.loggedUser, board)}>{board}
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                                 <button id="create-btn" onClick={onClickCreateBoard}>Create</button>
