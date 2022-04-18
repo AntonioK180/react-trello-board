@@ -19,8 +19,7 @@ const App = () => {
                         <>
                             <Route path="/home" element={<Homepage
                                 loggedUser={loggedUser}
-                                users={JSON.parse(localStorage.getItem("users"))}
-								username={localStorage.getItem('logged_user')}/>}/>
+                                users={JSON.parse(localStorage.getItem("users"))}/>}/>
 
                             <Route path="/boards" element={<Boards
                                 loggedUser={loggedUser}

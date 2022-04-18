@@ -1,5 +1,5 @@
 import './NavBar.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {BoardService} from '../../services/BoardService';
 import CreateBoard from "../CreateBoard/CreateBoard";
 
@@ -7,6 +7,23 @@ const NavBar = (props) => {
     const [state, setState] = useState("");
     const [displayCreateBoard, setDisplayCreateBoard] = useState(false);
     const boardService = new BoardService();
+    const [wordForSearch, setWordForSearch] = useState("");
+
+    const search = (word) => {
+        // TODO: Needs to be implemented.
+    };
+
+    useEffect(() => {
+        if (props.loggedUser) {
+            let input = document.getElementById("search-input");
+            input.addEventListener("keyup", function (e) {
+                if (KeyboardEvent.code === 13) {
+                    e.preventDefault();
+                    search(wordForSearch);
+                }
+            });
+        }
+    });
 
     const recentOnClick = () => {
         let recent = document.getElementById('recent-dropdown-content');
@@ -57,8 +74,16 @@ const NavBar = (props) => {
                                 </div>
                                 <button id="create-btn" onClick={onClickCreateBoard}>Create</button>
                                 <div className="homepage-title-account">
+                                    <div className="search-bar">
+                                        <div className="search-icon"></div>
+                                        <input
+                                            id="search-input"
+                                            type="text"
+                                            onChange={(event) => setWordForSearch(event.target.value)}
+                                        />
+                                    </div>
                                     <div className="account-icon"></div>
-                                    <h2>{props.username}</h2>
+                                    <h2>{props.loggedUser}</h2>
                                 </div>
                             </>
                             : <></>}
