@@ -1,24 +1,30 @@
-.homepage-title {
+/* .trello-main-heading {
+    padding: auto;
+    font-size: 22px;
+    height: 100%;
+    text-align: center;
+}
+
+
+.navigation-menu {
+    min-width: 100%;
     height: 6.5vh;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     background: #172b4d;
 }
 
-.homepage-title-main {
-    height: 5vh;
-    width: 440px;
+.menu-items {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .trello-icon{
-    margin-top: 8px;
-    margin-left: 5px;
     width: 50px;
     height: 100%;
     background-image: url("../../../public/trello-icon.gif");
     background-size: cover;
+    margin: 0;
 }
 
 .homepage-title h1 {
@@ -28,22 +34,17 @@
     left: 10px;
 }
 
-#boards-dropdown-content {
-    position: relative;
-    left: 50%;
-    top: 10px;
-    display: none;
-}
-
 .boards-dropbtn {
-    height: 90%;
-    background-color: transparent;
-    border: none;
-    font-size: 20px;
+        height: 90%;
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        position: relative;
+        top: 10px;
+        left: 35px;
+        color: white;
+    margin: auto;
     position: relative;
-    top: 10px;
-    left: 35px;
-    color: white;
 }
 
 .boards-dropbtn:hover{
@@ -68,23 +69,6 @@
     top: 8px;
     left: 50px;
     color: white;
-}
-
-.recent-dropbtn:hover{
-    background:#5E6C84;
-    border-radius: 5px;
-}
-
-#create-btn {
-    height: 100%;
-    border-radius: 5px;
-    background-color: #6751bc;
-    position: relative;
-    border: none;
-    color: white;
-    left: 70px;
-    top: 8px;
-    font-size: 20px;
 }
 
 #create-btn:hover {
@@ -116,6 +100,52 @@
     bottom: 3px;
 }
 
-.btn-recent-board {
+.left-items{
+    display: flex;
+}
 
+.homepage-title-main{
+    height: 100%;
+    display: flex;
+}
+
+.menu-items{
+    display: flex;
+} */
+
+
+.navigation-menu{
+    display: flex;
+    background-color: aqua;
+    height: 6vh ;
+    justify-content: space-between;
+    padding: 4px;
+}
+
+.trello-icon, .account-icon{
+    margin: 0;
+}
+
+.icon{
+    display: flex;
+}
+
+.left-side{
+    display: flex;
+}
+
+h1{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.boards-dropbtn{
+    margin: auto;
+    padding: auto;
+}
+
+button{
+    margin: 0;
+    padding: 0;
 }
