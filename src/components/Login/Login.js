@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Login.css"
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import NavBar from '../NavBar/NavBar';
 
-const Login = () => {
+const Login = (props) => {
     let navigate = useNavigate();
     const [username, setUsername] = useState("");
 
@@ -51,22 +52,26 @@ const Login = () => {
     }
 
     return (
-        <div className="form">
-            <form className='login-form' onSubmit={handleLoginSubmit}>
-                <h1>Login</h1>
-                <div className="input-container">
-                    <input type="text" name="uname"
-                           value={username}
-                           onChange={(event) => {
-                               setUsername(event.target.value)
-                           }}
-                           placeholder="Enter your username"/>
-                </div>
-                <div className="button-container">
-                    <input type="submit" value="Login"/>
-                </div>
-            </form>
-        </div>
+        <>
+            <NavBar loggedUser={props.loggedUser}
+                users={props.users} />
+            <div className="form">
+                <form className='login-form' onSubmit={handleLoginSubmit}>
+                    <h1>Login</h1>
+                    <div className="input-container">
+                        <input type="text" name="uname"
+                            value={username}
+                            onChange={(event) => {
+                                setUsername(event.target.value)
+                            }}
+                            placeholder="Enter your username" />
+                    </div>
+                    <div className="button-container">
+                        <input type="submit" value="Login" />
+                    </div>
+                </form>
+            </div>
+        </>
     )
 }
 
