@@ -9,35 +9,35 @@ This repository holds the contents of a HW for the ELSYS's subject "GUI" for stu
   
 - [x] Елементите в колоните да съдържат всички бутони и полета за попълване показани във втората картина, поставена в doc file-a
   
-- [ ] Елементите в колоните да показват кратко описание на съдържанието в елемента и при click, да се отваря компонент на преден план показващ допълнителната информация съдържаща се в елемента
+- [x] Елементите в колоните да показват кратко описание на съдържанието в елемента и при click, да се отваря компонент на преден план показващ допълнителната информация съдържаща се в елемента
   
 - [ ] Елементите да могат лесно да се прехвърлят от една в друга колона на дъската
   
 - [x] Възможност да се създават дъски
   
-- [ ] Екран за виждане на всички дъски в приложението
+- [x] Екран за виждане на всички дъски в приложението
 
 - [ ] Екран за виждане на всички скорощни добавени елементи в дъските
 
 ## Other requirements and banned elements:
 - [x] Framework - React!
 - [x] No real authentication required (just add a username to continue)
-- [ ] The content to be visible or have a way to see the content in a friendly way
+- [x] The content to be visible or have a way to see the content in a friendly way
 - [x] A user can have multiple boards
 - [ ] DragNDrop (Optional) 
 - [x] No use of HTML tables 
 - [x] Content is up to you
 - [ ] Easy transfer from one column to another
-- [ ] You can add as much as you like columns
+- [x] You can add as much as you like columns
 - [ ] Have a 'Recent' page with all recently created tasks 
 - [ ] Archive stores tasks that are no longer required in other columns
-- [ ] Home page required
-- [ ] CRUD like operations for board
+- [x] Home page required
+- [x] CRUD like operations for board
 - [x] No database required, no back-end required (but you can use if you want)
 - [x] https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API ( optional )
 - [x] No limits about the libraries you want to use
-- [ ] When you close the browser and get it back on - the state have to be the same
-- [ ] When you search for item make sure the item that was found is clear to the user
+- [x] When you close the browser and get it back on - the state have to be the same
+- [x] When you search for item make sure the item that was found is clear to the user
 
 # Getting Started with Create React App
 
