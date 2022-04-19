@@ -7,6 +7,7 @@ const NavBar = (props) => {
     const [state, setState] = useState("");
     const [displayCreateBoard, setDisplayCreateBoard] = useState(false);
     const boardService = new BoardService();
+    const [keyword, setKeyword] = useState('')
     
 
     const recentOnClick = () => {
@@ -63,8 +64,9 @@ const NavBar = (props) => {
                                         <input
                                             id="search-input"
                                             type="text"
-                                            onChange={(event) => props.setWordForSearch(event.target.value)}
+                                            onChange={(event) => setKeyword(event.target.value)}
                                         />
+                                        <button onClick={() => props.setWordForSearch(keyword)}> Search </button>
                                     </div>
                                     <div className="account-icon"></div>
                                     <h2>{props.loggedUser}</h2>
