@@ -15,7 +15,7 @@ const Boards = (props) => {
 
     const displaySingleBoard = (board) => {
         return (
-            <div className="board" onClick={() => boardService
+            <div className="single-board cursor-pointer" onClick={() => boardService
                 .handleBoardsOnClick(props.users,
                     props.loggedUser, board.board_name)}>
                 <h2>{board.board_name}</h2>
@@ -24,24 +24,8 @@ const Boards = (props) => {
     }
 
     return (
-        <div className="boards">
+        <div className="Boards">
             {getBoards().map(board => displaySingleBoard(board))}
-            <div className="add-board">
-                <form onSubmit={() => boardService
-                    .handleBoardSubmit(props.users, props.loggedUser, boardName)}>
-                    <label>
-                        Board Name:
-                        <input type="text" name="boardName"
-                               value={boardName}
-                               onChange={(event) => {
-                                   setBoardName(event.target.value)
-                               }}
-                               placeholder="Board name"
-                               required/>
-                    </label>
-                    <button type="submit">Create</button>
-                </form>
-            </div>
         </div>
     )
 }

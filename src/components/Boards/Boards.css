@@ -1,0 +1,17 @@
+.Boards {
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.Boards > .single-board {
+	box-sizing: border-box;
+    position: relative;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	margin: 2em 3em;
+    min-width: 18%;
+	background-color: black;
+	text-align: center;
+	color: white;
+}
