@@ -61,8 +61,7 @@ const EditCard = (props) => {
     }
 
 	function addCardDescription() {
-		console.log(cardDescription);
-		currCard.description.set(cardDescription);
+		currCard.description = cardDescription;
 		localStorage.setItem('users', JSON.stringify(props.users));
 	}
 
@@ -147,7 +146,7 @@ const EditCard = (props) => {
 					</textarea>
                     {displaySave ? <div className='buttons-wrapper'>
                         <button className='save-button cursor-pointer dark-blue-bg'
-                                onSubmit={() => addCardDescription()}>Save
+                                onClick={() => addCardDescription()}>Save
                         </button>
                         <span onClick={onClickCrossIcon} className='cross-icon cursor-pointer'></span>
                     </div> : null}
