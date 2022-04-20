@@ -32,20 +32,32 @@ const EditCard = (props) => {
 
     const showLabelSelect = () => {
         setDisplayMembers(false);
-        setDisplayLabels(true);
         setDisplayDate(false);
+        if (displayLabels) {
+            setDisplayLabels(false);
+        } else {
+            setDisplayLabels(true);
+        }
     }
 
     const showMembersSelect = () => {
-        setDisplayMembers(true);
         setDisplayLabels(false);
         setDisplayDate(false);
+        if (displayMembers) {
+            setDisplayMembers(false);
+        } else {
+            setDisplayMembers(true);
+        }
     }
 
     const showDateSelect = () => {
         setDisplayMembers(false);
         setDisplayLabels(false);
-        setDisplayDate(true);
+        if (displayDate) {
+            setDisplayDate(false);
+        } else {
+            setDisplayDate(true);
+        }
     }
 
     const closeLabelSelector = () => {
@@ -61,7 +73,8 @@ const EditCard = (props) => {
     }
 
 	function addCardDescription() {
-		currCard.description = cardDescription;
+        setDisplaySave(false);
+        currCard.description = cardDescription;
 		localStorage.setItem('users', JSON.stringify(props.users));
 	}
 
@@ -129,9 +142,9 @@ const EditCard = (props) => {
                     <a onClick={showMembersSelect}><CardAction name='Members'></CardAction></a>
                     <a onClick={showLabelSelect}><CardAction name='Labels'></CardAction></a>
                     <a onClick={showDateSelect}><CardAction name='Dates'></CardAction></a>
-                    <CardAction name='Attachmet'></CardAction>
+                    <CardAction name='Attachment'></CardAction>
                     <CardAction name='Cover'></CardAction>
-                    <CardAction name='Attachmet'></CardAction>
+                    <CardAction name='Attachment'></CardAction>
                     <CardAction name='Cover'></CardAction>
                 </aside>
 
