@@ -72,15 +72,18 @@ const EditCard = (props) => {
         setDisplayDate(false);
     }
 
-	function addCardDescription() {
+    function addCardDescription() {
         setDisplaySave(false);
         currCard.description = cardDescription;
-		localStorage.setItem('users', JSON.stringify(props.users));
-	}
+        localStorage.setItem('users', JSON.stringify(props.users));
+    }
 
-	return (
+    return (
         <>
-            {displayLabels ? <LabelSelector closeCallback={closeLabelSelector}/> : <></>}
+            {displayLabels ? <LabelSelector users={props.users}
+                                            loggedUser={props.loggedUser}
+                                            card_id={props.card_id}
+                                            closeCallback={closeLabelSelector}/> : <></>}
             {displayMembers ? <MembersSelect closeCallback={closeMemberSelect}/> : <></>}
             {displayDate ? <DateSelector closeCallback={closeDateSelector}/> : <></>}
 
