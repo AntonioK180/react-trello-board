@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.css';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import Portal from '../Portal/Portal';
 import EditCard from '../EditCard/EditCard';
 
@@ -15,14 +15,17 @@ const Card = (props) => {
 		setDisplayEdit(false);
 	}
 
-
 	return (
 		<>
 			<div className="Card">
 				<div className='card-body cursor-pointer' onClick={openEditScreen}> {props.name} </div>
 			</div>
 			<Portal>
-				{ displayEdit ? <EditCard closeCallback = {closeEditScreen} /> : <></> }
+				{ displayEdit ? <EditCard card_id={props.card_id}
+										  column_id={props.column_id}
+										  users={props.users}
+										  loggedUser={props.loggedUser}
+										  closeCallback = {closeEditScreen} /> : <></> }
 			</Portal>
 		</>
 	);

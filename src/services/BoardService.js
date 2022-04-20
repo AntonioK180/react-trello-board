@@ -50,4 +50,16 @@ export class BoardService {
         user.boards.push(newBoard);
         this.configureActiveBoard(users, user, newBoard);
     }
+
+    getCardByID(users, loggedUser, cardID) {
+        const user = this.getCurrentUser(users, loggedUser);
+        return user.cards.find(card => card.id === cardID);
+    }
+
+    getColumnById(users, loggedUser, columnID) {
+        const board = this.getCurrentBoard(users, loggedUser);
+
+        return board.columns.find(column => column.id === columnID);
+    }
+
 }
