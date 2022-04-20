@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import "./Login.css"
 import { useNavigate } from 'react-router-dom'
-import NavBar from '../NavBar/NavBar';
 
-const Login = (props) => {
+const Login = () => {
     let navigate = useNavigate();
     const [username, setUsername] = useState("");
 
@@ -53,8 +52,6 @@ const Login = (props) => {
 
     return (
         <>
-            <NavBar loggedUser={props.loggedUser}
-                users={props.users} />
             <div className="form">
                 <form className='login-form' onSubmit={handleLoginSubmit}>
                     <h1>Login</h1>
