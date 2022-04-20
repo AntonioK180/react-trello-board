@@ -13,6 +13,7 @@ const Column = (props) => {
         const user = boardService.getCurrentUser(props.users, props.loggedUser);
 
         const card = {
+            id: uuidv4(),
             column_id: props.id,
             name: cardName,
             description: "",
@@ -35,7 +36,12 @@ const Column = (props) => {
             </div>
             {boardService.getCurrentUser(props.users, props.loggedUser).cards
                 .filter((card) => card.column_id === props.id)
-                .map((card) => <Card key={uuidv4()} name={card.name}/>)}
+                .map((card) => <Card key={uuidv4()}
+                                     name={card.name}
+                                     card_id={card.id}
+                                     column_id={card.column_id}
+                                     users={props.users}
+                                     loggedUser={props.loggedUser}/>)}
             <form onSubmit={addCard} className="add-card-window">
                 <input type="text"
                        required
