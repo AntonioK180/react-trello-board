@@ -15,14 +15,16 @@ const Card = (props) => {
 		setDisplayEdit(false);
 	}
 
-
 	return (
 		<>
 			<div className="Card">
 				<div className='card-body cursor-pointer' onClick={openEditScreen}> {props.name} </div>
 			</div>
 			<Portal>
-				{ displayEdit ? <EditCard closeCallback = {closeEditScreen} /> : <></> }
+				{ displayEdit ? <EditCard id={props.id} 
+										loggedUser={props.loggedUser} 
+										closeCallback = {closeEditScreen} 
+										setArchive={props.setArchive}/> : <></> }
 			</Portal>
 		</>
 	);
