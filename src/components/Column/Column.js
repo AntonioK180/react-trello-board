@@ -44,7 +44,8 @@ const Column = (props) => {
                     id={card.id}
                     name={card.name}
                     loggedUser={props.loggedUser}
-                    setArchive={setCardArchived} />)}
+                    setArchive={setCardArchived} 
+                    renderInArchive={false}/>)}
             <form onSubmit={addCard} className="add-card-window">
                 <input type="text"
                     required

@@ -20,12 +20,15 @@ const Card = (props) => {
 			<div className="Card">
 				<div className='card-body cursor-pointer' onClick={openEditScreen}> {props.name} </div>
 			</div>
-			<Portal>
-				{ displayEdit ? <EditCard id={props.id} 
-										loggedUser={props.loggedUser} 
-										closeCallback = {closeEditScreen} 
-										setArchive={props.setArchive}/> : <></> }
-			</Portal>
+			{props.renderInArchive ? 
+				<></> : 
+				<Portal>
+					{ displayEdit ? <EditCard id={props.id} 
+											loggedUser={props.loggedUser} 
+											closeCallback = {closeEditScreen} 
+											setArchive={props.setArchive}/> : <></> }
+				</Portal>
+			}
 		</>
 	);
 };

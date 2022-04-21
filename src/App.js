@@ -5,7 +5,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PortalDiv } from './components/Portal/Portal';
 import Boards from "./components/Boards/Boards";
 import NavBar from "./components/NavBar/NavBar";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import Archive from "./components/Archive/Archive";
 
 const App = () => {
     const loggedUser = localStorage.getItem("logged_user");
@@ -28,8 +29,8 @@ const App = () => {
     return (
         <>
             <NavBar loggedUser={loggedUser}
-                    users={JSON.parse(localStorage.getItem("users"))}
-                    setWordForSearch={setWordForSearch} />
+                users={JSON.parse(localStorage.getItem("users"))}
+                setWordForSearch={setWordForSearch} />
             <BrowserRouter>
                 <Routes>
                     <Route path="/*" element={<Login loggedUser={loggedUser} />} />
@@ -42,6 +43,9 @@ const App = () => {
                             <Route path="/boards" element={<Boards
                                 loggedUser={loggedUser}
                                 users={JSON.parse(localStorage.getItem("users"))} />} />
+
+                            <Route path="/archive" element={<Archive
+                                loggedUser={loggedUser} />} />
                         </>
                         :
                         <></>

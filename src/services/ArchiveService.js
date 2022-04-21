@@ -16,7 +16,14 @@ export class ArchiveService {
     }
 
     getCards(){
-
+        const user = this.users.find(user => user.username === this.username);
+        return user.cards.filter(card => {
+            for (const archived_card of user.archived_cards)
+                if (archived_card.id === card.id) 
+                    return true;
+            
+            return false;
+        })  
     }
 
     cardInArchive(id){
