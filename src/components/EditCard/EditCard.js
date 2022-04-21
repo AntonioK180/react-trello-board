@@ -125,7 +125,7 @@ const EditCard = (props) => {
 					<CardAction name='Cover'></CardAction>
 					<button className='' onClick={() => {
 						archiveService.addCard(props.id);
-						props.setArchive(true);
+						props.setArchive(!props.cardArchived);
 					}
 					}>Archive</button>
 				</aside>

@@ -26,7 +26,8 @@ const Card = (props) => {
 					{ displayEdit ? <EditCard id={props.id} 
 											loggedUser={props.loggedUser} 
 											closeCallback = {closeEditScreen} 
-											setArchive={props.setArchive}/> : <></> }
+											setArchive={props.setArchive}
+											cardArchived={props.cardArchived}/> : <></> }
 				</Portal>
 			}
 		</>

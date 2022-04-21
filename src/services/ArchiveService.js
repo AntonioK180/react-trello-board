@@ -12,7 +12,12 @@ export class ArchiveService {
     }
 
     removeCard(card_id){
-
+        let user = this.users.find(user => user.username === this.username);
+        console.log(user.archived_cards);
+        
+        user.archived_cards.splice(user.archived_cards.indexOf({id:card_id}), 1);
+        console.log(user.archived_cards);
+        localStorage.setItem('users', JSON.stringify(this.users));
     }
 
     getCards(){
