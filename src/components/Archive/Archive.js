@@ -11,22 +11,24 @@ const Archive = (props) => {
 
     return (
         <div id="archive">
-            {cards.map(card => 
-                <div className = "card-archive">
-                    <Card key={card.id} 
-                                    loggedUser={props.loggedUser}
-                                    id={card.id}
-                                    name={card.name}
-                                    renderInArchive={true}/>
-                    <button className="fa fa-trash-o" style = {{fontSize: "22px"}}
-                            onClick={() => {
-                                archiveService.removeCard(card.id);
-                                setRerender(!rerender);
-                            }}></button>
-                </div>)}
-            <div className="controls">
-                <button className="btn-back" 
-                    onClick={() => window.location.href = "/home"}>Back</button>
+            <div className="cards">
+                {cards.map(card => 
+                    <div className = "card-archive">
+                        <Card key={card.id} 
+                                        loggedUser={props.loggedUser}
+                                        id={card.id}
+                                        name={card.name}
+                                        renderInArchive={true}/>
+                        <button className="fa fa-trash-o"
+                                onClick={() => {
+                                    archiveService.removeCard(card.id);
+                                    setRerender(!rerender);
+                                }}></button>
+                    </div>)}
+                <div className="controls">
+                    <button className="btn-back" 
+                        onClick={() => window.location.href = "/home"}>Back</button>
+                </div>
             </div>
         </div>
     )
