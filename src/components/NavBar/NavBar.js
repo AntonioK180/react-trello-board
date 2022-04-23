@@ -27,6 +27,12 @@ const NavBar = (props) => {
         return user.recent_boards;
     }
 
+    const logout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem('logged_user');
+        window.location.href = "/ ";
+    }
+
     return (
         <>
             {displayCreateBoard ? <CreateBoard
@@ -72,6 +78,7 @@ const NavBar = (props) => {
                                     </div>
                                     <div className="account-icon"></div>
                                     <h2>{props.loggedUser}</h2>
+                                    <a href="/" onClick={logout}>Logout</a>
                                 </div>
                             </>
                             : <></>}
