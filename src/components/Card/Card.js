@@ -19,7 +19,7 @@ const Card = (props) => {
 
     const moveCardRigth = () => {
         console.log('Move right');
-        const currCard = boardService.getCardByID(props.user,
+        const currCard = boardService.getCardByID(props.users,
             props.loggedUser, props.card_id);
         const column = boardService.getCardInColumn(props.users,
             props.loggedUser, props.card_id);
@@ -34,7 +34,7 @@ const Card = (props) => {
 
     const moveCardLeft = () => {
         console.log('Move left');
-        const currCard = boardService.getCardByID(props.user,
+        const currCard = boardService.getCardByID(props.users,
             props.loggedUser, props.card_id);
         const column = boardService.getCardInColumn(props.users,
             props.loggedUser, props.card_id);
