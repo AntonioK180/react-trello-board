@@ -119,3 +119,8 @@
 .hide {
     display: none;
 }
+
+.homepage-title-account a {
+    text-decoration: none;
+    color: white;
+}
