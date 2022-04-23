@@ -65,13 +65,7 @@ export class BoardService {
         const board = this.getCurrentBoard(users, loggedUser);
         const card = this.getCardByID(users, loggedUser, cardID);
 
-        return board.columns.find(column => column.id = card.column_id);
-    }
-
-    getCardInColumn(users, loggedUser, cardColumnID) {
-        const board = this.getCurrentBoard(users, loggedUser);
-
-        return board.columns.find(column => column.id === cardColumnID);
+        return board.columns.find(column => column.id === card.column_id);
     }
 
     getColumnByOrderNumber(users, loggedUser, orderNumber) {

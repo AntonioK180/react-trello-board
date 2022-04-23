@@ -26,8 +26,11 @@ const Card = (props) => {
 
         const nextColumn = boardService.getColumnByOrderNumber(props.users,
             props.loggedUser, column.order + 1).id;
-        if (nextColumn)
+        
+        if (nextColumn) {
             currCard.column_id = nextColumn.id;
+        }
+        localStorage.setItem("users", JSON.stringify(props.users));
         
         setUpdateBoard(!updateBoard);
     }
@@ -40,10 +43,14 @@ const Card = (props) => {
             props.loggedUser, props.card_id);
 
         const prevColumn = boardService.getColumnByOrderNumber(props.users,
-            props.loggedUser, column.order + 1).id;
-        if (prevColumn)
-            currCard.column_id = prevColumn.id;
+            props.loggedUser, column.order - 1).id;
         
+        if (prevColumn) {
+            currCard.column_id = prevColumn.id;
+        }
+
+        localStorage.setItem("users", JSON.stringify(props.users));
+
         setUpdateBoard(!updateBoard);
     }
 
