@@ -7,7 +7,12 @@
     width: 272px;
 }
 
+.click-to-edit {
+    width: 80%;
+}
+
 .card-body {
+    display: flex;
 	overflow: hidden;
     padding: 6px 8px 2px;
     position: relative;
@@ -18,18 +23,17 @@
     margin-bottom: 8px;
     max-width: 300px;
     min-height: 20px;
-    position: relative;
     text-decoration: none;
     z-index: 10;
 }
 
 .arrow-right::before {
-    float: right;
+    align-self: flex-end;
     content: "\21E8";
     margin-left: 12px;
 }
 
 .arrow-left::before {
-    float: right;
+    align-self: flex-end;
     content: "\21E6";
 }

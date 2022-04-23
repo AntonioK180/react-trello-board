@@ -7,6 +7,7 @@ import {BoardService} from "../../services/BoardService";
 const Card = (props) => {
     const boardService = new BoardService();
     const [displayEdit, setDisplayEdit] = useState(false);
+    const [updateBoard, setUpdateBoard] = useState(true);
 
     const openEditScreen = () => {
         setDisplayEdit(true);
@@ -18,8 +19,6 @@ const Card = (props) => {
 
     const moveCardRigth = () => {
         console.log('Move right');
-
-
         const currCard = boardService.getCardByID(props.user,
             props.loggedUser, props.card_id);
         const column = boardService.getCardInColumn(props.users,
@@ -29,12 +28,12 @@ const Card = (props) => {
             props.loggedUser, column.order + 1).id;
         if (nextColumn)
             currCard.column_id = nextColumn.id;
+        
+        setUpdateBoard(!updateBoard);
     }
 
     const moveCardLeft = () => {
         console.log('Move left');
-
-
         const currCard = boardService.getCardByID(props.user,
             props.loggedUser, props.card_id);
         const column = boardService.getCardInColumn(props.users,
@@ -44,15 +43,17 @@ const Card = (props) => {
             props.loggedUser, column.order + 1).id;
         if (prevColumn)
             currCard.column_id = prevColumn.id;
+        
+        setUpdateBoard(!updateBoard);
     }
 
     return (
         <>
             <div className="Card">
-                <div className='card-body cursor-pointer' onClick={openEditScreen}>
-                    {props.name}
-                    <span onClick={moveCardRigth} className='cursor-pointer arrow-right'></span>
+                <div className='card-body'>
+                    <div onClick={openEditScreen} className='click-to-edit cursor-pointer'> {props.name} </div>
                     <span onClick={moveCardLeft} className='cursor-pointer arrow-left'></span>
+                    <span onClick={moveCardRigth} className='cursor-pointer arrow-right'></span>
                 </div>
             </div>
             <Portal>

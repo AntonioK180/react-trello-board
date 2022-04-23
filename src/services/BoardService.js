@@ -58,7 +58,6 @@ export class BoardService {
 
     getColumnById(users, loggedUser, columnID) {
         const board = this.getCurrentBoard(users, loggedUser);
-
         return board.columns.find(column => column.id === columnID);
     }
 
