@@ -6,8 +6,8 @@ import CreateBoard from '../CreateBoard/CreateBoard';
 const NavBar = (props) => {
     const [state, setState] = useState("");
     const [displayCreateBoard, setDisplayCreateBoard] = useState(false);
-    const boardService = new BoardService();
     
+    const boardService = new BoardService();
 
     const recentOnClick = () => {
         let recent = document.getElementById('recent-dropdown-content');
@@ -56,8 +56,12 @@ const NavBar = (props) => {
                                         )}
                                     </div>
                                 </div>
-                                <button id="create-btn" onClick={onClickCreateBoard}>Create</button>
+                                <button className="create-btn" onClick={onClickCreateBoard}>Create</button>
                                 <div className="homepage-title-account">
+                                    {window.location.pathname === "/archive" ? <></> : 
+                                        <button className="create-btn" 
+                                            onClick={() => window.location.href="/archive"}>Archive</button>
+                                    }
                                     <div className="search-bar">
                                         <div className="search-icon"></div>
                                         <input
