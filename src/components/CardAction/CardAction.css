@@ -26,3 +26,8 @@
 .action-icon-Cover::before {
 	content: "\1F4BB";
 }
+
+.action-icon-Archive::before {
+	content: "\f187";
+	font-family: FontAwesome;
+}
