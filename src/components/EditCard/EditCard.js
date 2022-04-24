@@ -59,6 +59,11 @@ const EditCard = (props) => {
 		setDisplayDate(false);
 	}
 
+	const addToArchive = () => {
+		archiveService.addCard(props.id);
+		props.setArchive(!props.cardArchived);
+	}
+
 	return (
 		<>
 			{displayLabels ? <LabelSelector closeCallback={closeLabelSelector} /> : <></>}
@@ -121,13 +126,7 @@ const EditCard = (props) => {
 					<a onClick={showMembersSelect}><CardAction name='Members'></CardAction></a>
 					<a onClick={showLabelSelect}><CardAction name='Labels'></CardAction></a>
 					<a onClick={showDateSelect}><CardAction name='Dates'></CardAction></a>
-					<CardAction name='Attachment'></CardAction>
-					<CardAction name='Cover'></CardAction>
-					<button className='' onClick={() => {
-						archiveService.addCard(props.id);
-						props.setArchive(!props.cardArchived);
-					}
-					}>Archive</button>
+					<a onClick={addToArchive}><CardAction name='Archive'></CardAction></a>
 				</aside>
 
 				<div className='card-description'>
