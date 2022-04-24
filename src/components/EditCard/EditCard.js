@@ -30,22 +30,34 @@ const EditCard = (props) => {
 	}
 
 	const showLabelSelect = () => {
-		setDisplayMembers(false);
-		setDisplayLabels(true);
-		setDisplayDate(false);
-	}
+        setDisplayMembers(false);
+        setDisplayDate(false);
+        if (displayLabels) {
+            setDisplayLabels(false);
+        } else {
+            setDisplayLabels(true);
+        }
+    }
 
-	const showMembersSelect = () => {
-		setDisplayMembers(true);
-		setDisplayLabels(false);
-		setDisplayDate(false);
-	}
+    const showMembersSelect = () => {
+        setDisplayLabels(false);
+        setDisplayDate(false);
+        if (displayMembers) {
+            setDisplayMembers(false);
+        } else {
+            setDisplayMembers(true);
+        }
+    }
 
-	const showDateSelect = () => {
-		setDisplayMembers(false);
-		setDisplayLabels(false);
-		setDisplayDate(true);
-	}
+    const showDateSelect = () => {
+        setDisplayMembers(false);
+        setDisplayLabels(false);
+        if (displayDate) {
+            setDisplayDate(false);
+        } else {
+            setDisplayDate(true);
+        }
+    }
 
 	const closeLabelSelector = () => {
 		setDisplayLabels(false);
