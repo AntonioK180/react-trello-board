@@ -42,6 +42,7 @@ const Column = (props) => {
                 .filter((card) => archiveService.cardInArchive(card.id) === undefined)
                 .map((card) => <Card key={card.id}
                     id={card.id}
+                    columnName={props.name}
                     name={card.name}
                     loggedUser={props.loggedUser}
                     setArchive={setCardArchived} 

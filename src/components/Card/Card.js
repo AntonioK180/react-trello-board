@@ -24,6 +24,8 @@ const Card = (props) => {
 				<></> : 
 				<Portal>
 					{ displayEdit ? <EditCard id={props.id} 
+											cardName={props.name}
+											columnName={props.columnName}
 											loggedUser={props.loggedUser} 
 											closeCallback = {closeEditScreen} 
 											setArchive={props.setArchive}

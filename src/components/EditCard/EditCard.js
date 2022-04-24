@@ -17,8 +17,8 @@ const EditCard = (props) => {
 	const currentMembers = ['alex', 'balex'];
 	const archiveService = new ArchiveService(props.loggedUser);
 
-	let title = 'Title';
-	let listName = 'Despacito!';
+	let title = props.cardName;
+	let listName = props.columnName;
 
 	const onClickDescription = () => {
 		setDisplaySave(true);
