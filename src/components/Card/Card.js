@@ -18,7 +18,26 @@ const Card = (props) => {
 	}
 
 	const moveCardLeft = () => {
-		console.log('Move Left');
+		let loggedUser = localStorage.getItem("logged_user");
+		let userData = JSON.parse(localStorage.getItem("users"));
+
+		let loggedUserData = boardService.getCurrentUser(userData, loggedUser);
+	
+		let cardData = loggedUserData.cards.find(card => card.id === props.id);
+		let columnData = boardService.getColumnById(userData, loggedUser, cardData.column_id);
+
+		let columnOrder = columnData.order;
+
+		if ( columnOrder > 0 ) {
+			columnOrder--;
+		}
+
+		let newColumn = boardService.getColumnByOrderNumber(userData, loggedUser, columnOrder);
+		console.log(newColumn);
+
+		cardData.column_id = newColumn.id;
+		
+		// finally - we write all of this into local storage and reset component state
 	}
 
 	const moveCardRigth = () => {
