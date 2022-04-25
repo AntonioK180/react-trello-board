@@ -13,13 +13,13 @@ const Archive = (props) => {
         <div id="archive">
             <div className="cards">
                 {cards.map(card =>
-                    <div className="card-archive">
-                        <Card key={card.id}
+                    <div key={card.id} className="card-archive">
+                        <Card
                               loggedUser={props.loggedUser}
                               id={card.id}
                               cardName={card.name}
                               renderInArchive={true}/>
-                        <button className="fa fa-trash-o"
+                        <button className="fa fa-refresh bg-props"
                                 onClick={() => {
                                     archiveService.restoreCard(card.id);
                                     setRerender(!rerender);
