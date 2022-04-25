@@ -13,15 +13,19 @@ const Archive = (props) => {
         <div id="archive">
             <div className="cards">
                 {cards.map(card => 
-                    <div className = "card-archive">
-                        <Card key={card.id} 
-                                        loggedUser={props.loggedUser}
-                                        id={card.id}
-                                        name={card.name}
-                                        renderInArchive={true}/>
-                        <button className="fa fa-trash-o"
+                    <div key={card.id} className = "card-archive">
+                        <Card loggedUser={props.loggedUser}
+                                id={card.id}
+                                name={card.name}
+                                renderInArchive={true}/>
+                        <button className="fa fa-refresh bg-props"
                                 onClick={() => {
-                                    archiveService.removeCard(card.id);
+                                    archiveService.restoreCard(card.id);
+                                    setRerender(!rerender);
+                                }}></button>
+                        <button className="fa fa-trash-o bg-props"
+                                onClick={() => {
+                                    archiveService.eraseCard(card.id);
                                     setRerender(!rerender);
                                 }}></button>
                     </div>)}
