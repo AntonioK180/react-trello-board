@@ -186,6 +186,7 @@ const EditCard = (props) => {
                               }}
                               className='description-value grey-bg cursor-pointer'
                               rows="4" cols="180" placeholder='Add a more detailed description…'>
+                            {currCard.description}
 					</textarea>
                     {displaySave ? <div className='buttons-wrapper'>
                         <button className='save-button cursor-pointer dark-blue-bg'
