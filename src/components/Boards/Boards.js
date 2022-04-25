@@ -1,6 +1,6 @@
 import './Boards.css';
-import {useState} from "react";
-import {BoardService} from "../../services/BoardService";
+import { useState } from "react";
+import { BoardService } from "../../services/BoardService";
 
 const Boards = (props) => {
     const boardService = new BoardService();
@@ -13,19 +13,34 @@ const Boards = (props) => {
         return user.boards;
     }
 
-    const displaySingleBoard = (board) => {
+    const displaySingleBoard = (board, index) => {
         return (
-            <div className="single-board cursor-pointer" onClick={() => boardService
+            <h3 className="board" key={index} onClick={() => boardService
                 .handleBoardsOnClick(props.users,
-                    props.loggedUser, board.board_name)}>
-                <h2>{board.board_name}</h2>
-            </div>
+                    props.loggedUser, board.board_name)}>{board.board_name}</h3>
         )
     }
 
     return (
-        <div className="Boards">
-            {getBoards().map(board => displaySingleBoard(board))}
+        <div className="boards">
+            <h2>Your boards:</h2>
+            {getBoards().map((board, index) => displaySingleBoard(board, index))}
+            <div className="add-board">
+                <form onSubmit={() => boardService
+                    .handleBoardSubmit(props.users, props.loggedUser, boardName)}>
+                    <div className='labelHolder'>
+                        <label>Board Name:</label>
+                        <input type="text" name="boardName"
+                               value={boardName}
+                               onChange={(event) => {
+                                   setBoardName(event.target.value)
+                               }}
+                               placeholder="Board name"
+                               required />
+                    </div>
+                    <button type="submit">Create</button>
+                </form>
+            </div>
         </div>
     )
 }
