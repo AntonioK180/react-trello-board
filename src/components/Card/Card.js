@@ -30,7 +30,9 @@ const Card = (props) => {
                         column_id={props.column_id}
                         closeCallback={closeEditScreen}
                         setArchive={props.setArchive}
-                        cardArchived={props.cardArchived}/> : <></>}
+                        cardArchived={props.cardArchived}
+                        setCardRenamed={props.setCardRenamed}
+                        cardRenamed={props.cardRenamed}/> : <></>}
                 </Portal>
             }
         </>

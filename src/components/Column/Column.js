@@ -11,6 +11,7 @@ const Column = (props) => {
     const [cards, setCards] = useState([{}]);
     const archiveService = new ArchiveService(props.loggedUser);
     const [cardArchived, setCardArchived] = useState(false);
+    const [cardRenamed, setCardRenamed] = useState(false);
 
     const addCard = () => {
         const user = boardService.getCurrentUser(props.users, props.loggedUser);
@@ -48,7 +49,9 @@ const Column = (props) => {
                                      cardName={card.name}
                                      setArchive={setCardArchived}
                                      cardArchived={cardArchived}
-                                     renderInArchive={false}/>)}
+                                     renderInArchive={false}
+                                     setCardRenamed={setCardRenamed}
+                                     cardRenamed={cardRenamed}/>)}
             <form onSubmit={addCard} className="add-card-window">
                 <input type="text"
                        required
