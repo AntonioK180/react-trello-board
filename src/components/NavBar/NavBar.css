@@ -1,126 +1,138 @@
-.homepage-title {
+#navbar {
     height: 6.5vh;
+    background: #172b4d;
+    display: flex;
+    width: 100vw;
+}
+
+#navbar .navbar-title {
+    height: 100%;
+    width: 50vw;
     display: flex;
     justify-content: flex-start;
-    background: #172b4d;
 }
 
-.homepage-title-main {
-    height: 5vh;
-    width: 440px;
+#navbar .homepage-account {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+    width: 50vw;
 }
 
-.trello-icon{
-    margin-top: 8px;
-    margin-left: 5px;
-    width: 50px;
-    height: 100%;
-    background-image: url("../../../public/trello-icon.gif");
-    background-size: cover;
+#navbar .fa-trello {
+    color:white;
+    font-size: 3.5em;   
+    margin-left: 0.08em;
 }
 
-.homepage-title h1 {
+#navbar .title {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    font-weight: bold;
     color: white;
-    position: relative;
-    bottom: 20%;
-    left: 10px;
+    font-size: 2em;
+    padding: 0 0.7em;
 }
 
-#boards-dropdown-content {
-    position: relative;
-    left: 50%;
-    top: 10px;
-    display: none;
-}
-
-.boards-dropbtn {
-    height: 90%;
+#navbar .dropbtn {
     background-color: transparent;
-    border: none;
-    font-size: 20px;
-    position: relative;
-    top: 10px;
-    left: 35px;
     color: white;
+    border: none;
+    margin: 0.5em 0.5em;
+    padding: 0.5em;
+    font-size: 1.2em;
 }
 
-.boards-dropbtn:hover{
-    background:#5E6C84;
+#navbar .dropbtn:hover {
+    background: #5E6C84;
     border-radius: 5px;
+}
+
+#navbar .boards-btn {
+    position: relative;
 }
 
 #recent-dropdown-content {
-    position: relative;
-    left: 53px;
-    top: 10px;
     display: none;
+    flex-direction: column;
+    z-index: 11;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+#navbar .btn-recent-board {
+    font-size: 1.2em;
+    border: none;
+    border-bottom: 1px solid black !important; 
+    background-color: transparent;
+    margin: 0 0.3em 0 0.3em;
+    padding: 0.3em;
+}
+
+#navbar .create-btn {
+    border-radius: 5px;
+    background-color: #6751bc;      
+    color:  white;
+    border: none;
+    margin: 0.5em;
+    font-size: 1.2em;
+}
+
+#navbar .create-btn:hover {
+    background: #5E6C84;
+}
+
+#navbar .recent-dropdown{
+    display: flex;
     flex-direction: column;
 }
 
-.recent-dropbtn {
-    background-color: transparent;
-    height: 100%;
-    border: none;
-    font-size: 20px;
-    position: relative;
-    top: 8px;
-    left: 50px;
-    color: white;
-}
-
-.recent-dropbtn:hover{
-    background:#5E6C84;
+#navbar .search-bar {
+    margin: 0.7em 1em 0.7em 0;
     border-radius: 5px;
-}
-
-.create-btn {
-    height: 100%;
-    border-radius: 5px;
-    background-color: #6751bc;
-    position: relative;
-    border: none;
-    color: white;
-    left: 70px;
-    top: 8px;
-    font-size: 20px;
-}
-
-#create-btn:hover {
-    background:#5E6C84;
-}
-
-.homepage-title-account {
-    height: 5.7vh;
+    background: white;
     display: flex;
-    justify-content: flex-end;
-    position: fixed;
-    right:0;
-    width: 450px;
+    align-items: center;
 }
 
-.account-icon {
-    margin-top: 3px;
-    margin-right: 15px;
-    width: 55px;
-    height: 100%;
-    background-image: url("../../../public/account_icon.png");
-    background-size: cover;
+#navbar #search-input {
+    height: 90%;
+    font-size: 1.2em;
+    border-radius: 3px;
+    border: none;
+    padding: 0;
+    margin: 0 0.5em 0 0;
 }
 
-.homepage-title-account h2 {
+#navbar .fa-search {
+    font-size: 1.5em;
+    margin: 0 0.5em 0 0.5em;   
+}
+
+#navbar .fa-user {
     color: white;
-    margin-right: 15px;
-    position: relative;
-    bottom: 3px;
+    font-size: 3.4em;
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 0.5em;
 }
 
-.hide {
-    display: none;
+#navbar .logged-user {
+    display: flex;
+    align-items: center;
+    margin: 0 1em 0 0.5em;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: white;
 }
 
-.homepage-title-account a {
+#navbar .logout-link {
+    display: flex;
+    align-items: center;
+    margin: 0.5em;    
+    font-size: 1.2em;
     text-decoration: none;
-    color: white;
+    padding: 0.5em;
 }

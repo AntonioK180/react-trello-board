@@ -50,11 +50,11 @@ const Column = (props) => {
                                      renderInArchive={false}/>)}
             <form onSubmit={addCard} className="add-card-window">
                 <input type="text"
-                       required
-                       className='add-card-field'
-                       id="add-card-input"
-                       placeholder="Enter card title..."
-                       onChange={(event) => setCardName(event.target.value)}/>
+                    required
+                    className='add-card-field'
+                    id="add-card-input"
+                    placeholder="Enter card title..."
+                    onChange={(event) => setCardName(event.target.value)} />
                 <div className="buttons">
                     <button type='submit' className="btn-add-card">Add card</button>
                 </div>

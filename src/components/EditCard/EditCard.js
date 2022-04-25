@@ -17,8 +17,8 @@ const EditCard = (props) => {
 	const currentMembers = ['alex', 'balex'];
 	const archiveService = new ArchiveService(props.loggedUser);
 
-	let title = 'Title';
-	let listName = 'Despacito!';
+	let title = props.cardName;
+	let listName = props.columnName;
 
 	const onClickDescription = () => {
 		setDisplaySave(true);
@@ -69,6 +69,11 @@ const EditCard = (props) => {
 
 	const closeDateSelector = () => {
 		setDisplayDate(false);
+	}
+
+	const addToArchive = () => {
+		archiveService.addCard(props.id);
+		props.setArchive(!props.cardArchived);
 	}
 
 	return (
@@ -133,13 +138,7 @@ const EditCard = (props) => {
 					<a onClick={showMembersSelect}><CardAction name='Members'></CardAction></a>
 					<a onClick={showLabelSelect}><CardAction name='Labels'></CardAction></a>
 					<a onClick={showDateSelect}><CardAction name='Dates'></CardAction></a>
-					<CardAction name='Attachment'></CardAction>
-					<CardAction name='Cover'></CardAction>
-					<button className='' onClick={() => {
-						archiveService.addCard(props.id);
-						props.setArchive(!props.cardArchived);
-					}
-					}>Archive</button>
+					<a onClick={addToArchive}><CardAction name='Archive'></CardAction></a>
 				</aside>
 
 				<div className='card-description'>
