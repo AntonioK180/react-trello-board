@@ -1,9 +1,10 @@
 .login-form {
     width: 20vw;
     height: 40vh;
+    min-width: 400px;
     background-color: #ebecf0;
-    position: absolute;
-    transform: translateY(70%);
+    margin: auto;
+    margin-top: 6vh;
     border-radius: 10px;
 }
 
@@ -15,10 +16,11 @@ form h1 {
 .form {
     display: flex;
     justify-content: center;
+    height: fit-content;
 }
 
 .input-container > input[type="text"] {
-    height: 25px;
+    margin-bottom: 2vh;
     border: 1px solid rgba(0, 0, 0, 0.2);
     width: 60%;
 }
@@ -30,7 +32,7 @@ input[type="submit"] {
     background: #01d28e;
     border: 1px solid #01d28e;
     color: #fff;
-    padding: 10px 20px;
+    padding: 0.3em;
 }
 
 input[type="submit"]:hover {
@@ -40,7 +42,6 @@ input[type="submit"]:hover {
 .button-container {
     display: flex;
     justify-content: center;
-    height: 35%
 }
 
 .login-form {
