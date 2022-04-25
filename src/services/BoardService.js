@@ -50,4 +50,55 @@ export class BoardService {
         user.boards.push(newBoard);
         this.configureActiveBoard(users, user, newBoard);
     }
+
+    getCardByID(users, loggedUser, cardID) {
+        const user = this.getCurrentUser(users, loggedUser);
+        return user.cards.find(card => card.id === cardID);
+    }
+
+    getColumnById(users, loggedUser, columnID) {
+        const board = this.getCurrentBoard(users, loggedUser);
+
+        return board.columns.find(column => column.id === columnID);
+    }
+
+    getCardInColumnByCardID(users, loggedUser, cardID) {
+        const board = this.getCurrentBoard(users, loggedUser);
+        const card = this.getCardByID(users, loggedUser, cardID);
+
+        return board.columns.find(column => column.id = card.column_id);
+    }
+
+    getCardInColumnByCardColumnID(users, loggedUser, cardColumnID) {
+        const board = this.getCurrentBoard(users, loggedUser);
+
+        return board.columns.find(column => column.id === cardColumnID);
+    }
+
+    getColumnByOrderNumber(users, loggedUser, orderNumber) {
+        const board = this.getCurrentBoard(users, loggedUser);
+
+        return board.columns.find(column => column.order === orderNumber);
+    }
+
+    removeCardByID(users, loggedUser, cardID) {
+        const user = this.getCurrentUser(users, loggedUser);
+
+        user.cards = user.cards.filter(card => card.id !== cardID);
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    removeColumnByID(users, loggedUser, columnID) {
+        const board = this.getCurrentBoard(users, loggedUser);
+
+        board.columns = board.columns.filter(column => column.id !== columnID);
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+
+    removeBoardByID(users, loggedUser, boardID) {
+        const user = this.getCurrentUser(users, loggedUser);
+
+        user.boards = user.boards.filter(board => board.id !== boardID);
+        localStorage.setItem("users", JSON.stringify(users));
+    }
 }

@@ -1,7 +1,7 @@
 import {ArchiveService} from '../../services/ArchiveService';
 import "./Archive.css";
 import Card from '../Card/Card';
-import { useState } from 'react';
+import {useState} from 'react';
 
 const Archive = (props) => {
     const [rerender, setRerender] = useState(false);
@@ -12,12 +12,13 @@ const Archive = (props) => {
     return (
         <div id="archive">
             <div className="cards">
-                {cards.map(card => 
-                    <div key={card.id} className = "card-archive">
-                        <Card loggedUser={props.loggedUser}
-                                id={card.id}
-                                name={card.name}
-                                renderInArchive={true}/>
+                {cards.map(card =>
+                    <div key={card.id} className="card-archive">
+                        <Card
+                              loggedUser={props.loggedUser}
+                              id={card.id}
+                              cardName={card.name}
+                              renderInArchive={true}/>
                         <button className="fa fa-refresh bg-props"
                                 onClick={() => {
                                     archiveService.restoreCard(card.id);
@@ -30,8 +31,9 @@ const Archive = (props) => {
                                 }}></button>
                     </div>)}
                 <div className="controls">
-                    <button className="btn-back" 
-                        onClick={() => window.location.href = "/home"}>Back</button>
+                    <button className="btn-back"
+                            onClick={() => window.location.href = "/home"}>Back
+                    </button>
                 </div>
             </div>
         </div>
