@@ -51,6 +51,11 @@ export class BoardService {
         this.configureActiveBoard(users, user, newBoard);
     }
 
+    getCardByID(users, loggedUser, cardID) {
+        const user = this.getCurrentUser(users, loggedUser);
+        return user.cards.find(card => card.id === cardID);
+    }
+
     getColumnById(users, loggedUser, columnID) {
         const board = this.getCurrentBoard(users, loggedUser);
         return board.columns.find(column => column.id === columnID);
@@ -63,7 +68,7 @@ export class BoardService {
         return board.columns.find(column => column.id === card.column_id);
     }
 
-    getColumnByOrderNumber(users, loggedUser, orderNumber) {
+    getColumnIDByOrderNumber(users, loggedUser, orderNumber) {
         const board = this.getCurrentBoard(users, loggedUser);
 
         return board.columns.find(column => column.order === orderNumber);

@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import Card from '../Card/Card';
 import './Column.css';
-import { BoardService } from "../../services/BoardService";
-import { v4 as uuidv4 } from "uuid";
-import { ArchiveService } from '../../services/ArchiveService';
+import {BoardService} from "../../services/BoardService";
+import {v4 as uuidv4} from "uuid";
+import {ArchiveService} from '../../services/ArchiveService';
 
 const Column = (props) => {
     const boardService = new BoardService();
@@ -41,19 +41,20 @@ const Column = (props) => {
                 .filter((card) => card.column_id === props.id)
                 .filter((card) => archiveService.cardInArchive(card.id) === undefined)
                 .map((card) => <Card key={card.id}
-                    id={card.id}
-                    name={card.name}
-                    loggedUser={props.loggedUser}
-                    setArchive={setCardArchived} 
-                    cardArchived={cardArchived}
-                    renderInArchive={false}/>)}
+                                     card_id={card.id}
+                                     name={card.name}
+                                     users={props.users}
+                                     loggedUser={props.loggedUser}
+                                     setArchive={setCardArchived}
+                                     cardArchived={cardArchived}
+                                     renderInArchive={false}/>)}
             <form onSubmit={addCard} className="add-card-window">
                 <input type="text"
-                    required
-                    className='add-card-field'
-                    id="add-card-input"
-                    placeholder="Enter card title..."
-                    onChange={(event) => setCardName(event.target.value)} />
+                       required
+                       className='add-card-field'
+                       id="add-card-input"
+                       placeholder="Enter card title..."
+                       onChange={(event) => setCardName(event.target.value)}/>
                 <div className="buttons">
                     <button type='submit' className="btn-add-card">Add card</button>
                 </div>

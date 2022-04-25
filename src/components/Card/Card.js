@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Card.css';
-import { useState } from 'react';
 import Portal from '../Portal/Portal';
 import EditCard from '../EditCard/EditCard';
 import {BoardService} from "../../services/BoardService";
@@ -8,6 +7,7 @@ import {BoardService} from "../../services/BoardService";
 const Card = (props) => {
 	const boardService = new BoardService();
 	const [displayEdit, setDisplayEdit] = useState(false);
+	const [updateBoard, setUpdateBoard] = useState(true);
 
 	const openEditScreen = () => {
 		setDisplayEdit(true);
@@ -17,31 +17,39 @@ const Card = (props) => {
 		setDisplayEdit(false);
 	}
 
-	const moveCardLeft = () => {
-		let loggedUser = localStorage.getItem("logged_user");
-		let userData = JSON.parse(localStorage.getItem("users"));
+	const moveCardRigth = () => {
+		const currCard = boardService.getCardByID(props.users,
+			props.loggedUser, props.card_id);
+		const column = boardService.getCardInColumn(props.users,
+			props.loggedUser, props.card_id);
 
-		let loggedUserData = boardService.getCurrentUser(userData, loggedUser);
-	
-		let cardData = loggedUserData.cards.find(card => card.id === props.id);
-		let columnData = boardService.getColumnById(userData, loggedUser, cardData.column_id);
+		const nextColumn = boardService.getColumnIDByOrderNumber(props.users,
+			props.loggedUser, column.order + 1);
 
-		let columnOrder = columnData.order;
-
-		if ( columnOrder > 0 ) {
-			columnOrder--;
+		if (nextColumn) {
+			currCard.column_id = nextColumn.id;
 		}
+		localStorage.setItem("users", JSON.stringify(props.users));
 
-		let newColumn = boardService.getColumnByOrderNumber(userData, loggedUser, columnOrder);
-		console.log(newColumn);
-
-		cardData.column_id = newColumn.id;
-		
-		// finally - we write all of this into local storage and reset component state
+		setUpdateBoard(!updateBoard);
 	}
 
-	const moveCardRigth = () => {
-		console.log('Move right');
+	const moveCardLeft = () => {
+		const currCard = boardService.getCardByID(props.users,
+			props.loggedUser, props.card_id);
+		const column = boardService.getCardInColumn(props.users,
+			props.loggedUser, props.card_id);
+
+		const prevColumn = boardService.getColumnIDByOrderNumber(props.users,
+			props.loggedUser, column.order - 1);
+
+		if (prevColumn) {
+			currCard.column_id = prevColumn.id;
+		}
+
+		localStorage.setItem("users", JSON.stringify(props.users));
+
+		setUpdateBoard(!updateBoard);
 	}
 
 	return (
@@ -53,16 +61,13 @@ const Card = (props) => {
 					<span onClick={moveCardRigth} className='cursor-pointer arrow-right'></span>
 				</div>
 			</div>
-			{props.renderInArchive ? 
-				<></> : 
-				<Portal>
-					{ displayEdit ? <EditCard id={props.id} 
-											loggedUser={props.loggedUser} 
-											closeCallback = {closeEditScreen} 
-											setArchive={props.setArchive}
-											cardArchived={props.cardArchived}/> : <></> }
-				</Portal>
-			}
+			<Portal>
+				{displayEdit ? <EditCard card_id={props.card_id}
+										 column_id={props.column_id}
+										 users={props.users}
+										 loggedUser={props.loggedUser}
+										 closeCallback={closeEditScreen}/> : <></>}
+			</Portal>
 		</>
 	);
 };
