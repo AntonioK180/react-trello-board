@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import Card from '../Card/Card';
 import './Column.css';
-import { BoardService } from "../../services/BoardService";
-import { v4 as uuidv4 } from "uuid";
-import { ArchiveService } from '../../services/ArchiveService';
+import {BoardService} from "../../services/BoardService";
+import {v4 as uuidv4} from "uuid";
+import {ArchiveService} from '../../services/ArchiveService';
 
 const Column = (props) => {
     const boardService = new BoardService();
@@ -50,6 +50,8 @@ const Column = (props) => {
                                      setArchive={setCardArchived}
                                      cardArchived={cardArchived}
                                      renderInArchive={false}
+                                     cardChange={props.cardChange}
+                                     setCardChange={props.setCardChange}
                                      setCardRenamed={setCardRenamed}
                                      cardRenamed={cardRenamed}/>)}
             <form onSubmit={addCard} className="add-card-window">
