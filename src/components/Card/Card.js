@@ -1,6 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Card.css';
-import { useState } from 'react';
 import Portal from '../Portal/Portal';
 import EditCard from '../EditCard/EditCard';
 import {BoardService} from "../../services/BoardService";
@@ -9,9 +8,9 @@ const Card = (props) => {
     const boardService = new BoardService();
     const [displayEdit, setDisplayEdit] = useState(false);
 
-	const openEditScreen = () => {
-		setDisplayEdit(true);
-	}
+    const openEditScreen = () => {
+        setDisplayEdit(true);
+    }
 
     const closeEditScreen = () => {
         setDisplayEdit(false);
@@ -63,13 +62,16 @@ const Card = (props) => {
             {props.renderInArchive ?
                 <></> :
                 <Portal>
-                    {displayEdit ? <EditCard card_id={props.card_id}
-                                             column_id={props.column_id}
-                                             users={props.users}
-                                             loggedUser={props.loggedUser}
-                                             closeCallback={closeEditScreen}
-                                             setArchive={props.setArchive}
-											 cardArchived={props.cardArchived}
+                    {displayEdit ? <EditCard
+                        users={props.users}
+                        loggedUser={props.loggedUser}
+                        card_id={props.card_id}
+                        column_id={props.column_id}
+                        closeCallback={closeEditScreen}
+                        setArchive={props.setArchive}
+                        cardArchived={props.cardArchived}
+                        setCardRenamed={props.setCardRenamed}
+                        cardRenamed={props.cardRenamed}
                     /> : <></>}
                 </Portal>
             }
