@@ -34,7 +34,7 @@ This repository holds the contents of a HW for the ELSYS's subject "GUI" for stu
 - [x] Home page required
 - [x] CRUD like operations for board
 - [x] No database required, no back-end required (but you can use if you want)
-- [x] https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API ( optional )
+- [ ] https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API ( optional )
 - [x] No limits about the libraries you want to use
 - [x] When you close the browser and get it back on - the state have to be the same
 - [x] When you search for item make sure the item that was found is clear to the user
