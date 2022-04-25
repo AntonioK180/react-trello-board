@@ -17,7 +17,7 @@ const Column = (props) => {
 
         const card = {
             id: uuidv4(),
-            column_id: props.id,
+            column_id: props.column_id,
             name: cardName,
             description: "",
             color: "",
@@ -35,17 +35,17 @@ const Column = (props) => {
     return (
         <div className="Column">
             <div className='column-header'>
-                <h1 className='single-column-name'>{props.name}</h1>
+                <h1 className='single-column-name'>{props.columnName}</h1>
             </div>
             {boardService.getCurrentUser(props.users, props.loggedUser).cards
-                .filter((card) => card.column_id === props.id)
+                .filter((card) => card.column_id === props.column_id)
                 .filter((card) => archiveService.cardInArchive(card.id) === undefined)
                 .map((card) => <Card key={uuidv4()}
-                                     card_id={card.id}
-                                     column_id={props.column_id}
-                                     name={card.name}
                                      users={props.users}
                                      loggedUser={props.loggedUser}
+                                     card_id={card.id}
+                                     column_id={props.column_id}
+                                     cardName={card.name}
                                      setArchive={setCardArchived}
                                      cardArchived={cardArchived}
                                      renderInArchive={false}/>)}

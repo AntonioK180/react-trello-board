@@ -17,7 +17,7 @@ const Archive = (props) => {
                         <Card key={card.id} 
                                         loggedUser={props.loggedUser}
                                         id={card.id}
-                                        name={card.name}
+                                        cardName={card.name}
                                         renderInArchive={true}/>
                         <button className="fa fa-trash-o"
                                 onClick={() => {

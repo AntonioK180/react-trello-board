@@ -5,6 +5,7 @@ import MembersSelect from '../MembersSelect/MembersSelect';
 import DateSelector from '../DateSelector/DateSelector';
 import './EditCard.css';
 import {BoardService} from "../../services/BoardService";
+import {ArchiveService} from "../../services/ArchiveService";
 
 const EditCard = (props) => {
     const boardService = new BoardService();
@@ -17,6 +18,7 @@ const EditCard = (props) => {
 
     const currentLabels = ['green', 'red', 'yellow'];
     const currentMembers = ['alex', 'balex'];
+    const archiveService = new ArchiveService(props.loggedUser);
 
     let currCard = boardService.getCardByID(props.users, props.loggedUser, props.card_id);
     let currColumn = boardService.getColumnById(props.users, props.loggedUser, props.column_id);
@@ -76,6 +78,11 @@ const EditCard = (props) => {
         setDisplaySave(false);
         currCard.description = cardDescription;
         localStorage.setItem('users', JSON.stringify(props.users));
+    }
+
+    const addToArchive = () => {
+        archiveService.addCard(props.card_id);
+        props.setArchive(!props.cardArchived);
     }
 
     return (
@@ -145,6 +152,7 @@ const EditCard = (props) => {
                     <a onClick={showMembersSelect}><CardAction name='Members'></CardAction></a>
                     <a onClick={showLabelSelect}><CardAction name='Labels'></CardAction></a>
                     <a onClick={showDateSelect}><CardAction name='Dates'></CardAction></a>
+                    <a onClick={addToArchive}><CardAction name='Archive'></CardAction></a>
                     <CardAction name='Attachment'></CardAction>
                     <CardAction name='Cover'></CardAction>
                     <CardAction name='Attachment'></CardAction>

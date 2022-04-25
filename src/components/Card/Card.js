@@ -18,23 +18,19 @@ const Card = (props) => {
     return (
         <>
             <div className="Card">
-                <div className='card-body cursor-pointer' onClick={openEditScreen}> {props.name} </div>
+                <div className='card-body cursor-pointer' onClick={openEditScreen}> {props.cardName} </div>
             </div>
             {props.renderInArchive ?
                 <></> :
                 <Portal>
-                    {displayEdit ? <EditCard id={props.id}
-
-											 card_id={props.card_id}
-											 column_id={props.column_id}
-											 users={props.users}
-
-                                             cardName={props.name}
-                                             columnName={props.columnName}
-                                             loggedUser={props.loggedUser}
-                                             closeCallback={closeEditScreen}
-                                             setArchive={props.setArchive}
-                                             cardArchived={props.cardArchived}/> : <></>}
+                    {displayEdit ? <EditCard
+                        users={props.users}
+                        loggedUser={props.loggedUser}
+                        card_id={props.card_id}
+                        column_id={props.column_id}
+                        closeCallback={closeEditScreen}
+                        setArchive={props.setArchive}
+                        cardArchived={props.cardArchived}/> : <></>}
                 </Portal>
             }
         </>
