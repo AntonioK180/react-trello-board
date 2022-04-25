@@ -27,7 +27,9 @@
     background-color: #172b4d;
 }
 
-#archive .fa-trash-o {
+#archive .bg-props {
     margin-left: 0.5rem;
     font-size: 1.35rem;
+    background-color: white;
+    border-radius: 5px;
 }

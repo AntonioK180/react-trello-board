@@ -1,7 +1,7 @@
 import {ArchiveService} from '../../services/ArchiveService';
 import "./Archive.css";
 import Card from '../Card/Card';
-import { useState } from 'react';
+import {useState} from 'react';
 
 const Archive = (props) => {
     const [rerender, setRerender] = useState(false);
@@ -12,22 +12,28 @@ const Archive = (props) => {
     return (
         <div id="archive">
             <div className="cards">
-                {cards.map(card => 
-                    <div className = "card-archive">
-                        <Card key={card.id} 
-                                        loggedUser={props.loggedUser}
-                                        id={card.id}
-                                        cardName={card.name}
-                                        renderInArchive={true}/>
+                {cards.map(card =>
+                    <div className="card-archive">
+                        <Card key={card.id}
+                              loggedUser={props.loggedUser}
+                              id={card.id}
+                              cardName={card.name}
+                              renderInArchive={true}/>
                         <button className="fa fa-trash-o"
                                 onClick={() => {
-                                    archiveService.removeCard(card.id);
+                                    archiveService.restoreCard(card.id);
+                                    setRerender(!rerender);
+                                }}></button>
+                        <button className="fa fa-trash-o bg-props"
+                                onClick={() => {
+                                    archiveService.eraseCard(card.id);
                                     setRerender(!rerender);
                                 }}></button>
                     </div>)}
                 <div className="controls">
-                    <button className="btn-back" 
-                        onClick={() => window.location.href = "/home"}>Back</button>
+                    <button className="btn-back"
+                            onClick={() => window.location.href = "/home"}>Back
+                    </button>
                 </div>
             </div>
         </div>

@@ -11,12 +11,9 @@ export class ArchiveService {
         localStorage.setItem('users', JSON.stringify(this.users));
     }
 
-    removeCard(card_id){
+    restoreCard(card_id){
         let user = this.users.find(user => user.username === this.username);
-        console.log(user.archived_cards);
-        
         user.archived_cards.splice(user.archived_cards.indexOf({id:card_id}), 1);
-        console.log(user.archived_cards);
         localStorage.setItem('users', JSON.stringify(this.users));
     }
 
@@ -34,5 +31,14 @@ export class ArchiveService {
     cardInArchive(id){
         return this.users.find(user => user.username === this.username).archived_cards
                          .find(card => card.id === id);
+    }
+
+    eraseCard(card_id){
+        let user = this.users.find(user => user.username === this.username);
+        user.archived_cards.splice(user.archived_cards.indexOf({id:card_id}), 1);
+
+        const card = user.cards.find(card => card.id === card_id);
+        user.cards.splice(user.cards.indexOf(card), 1);
+        localStorage.setItem('users', JSON.stringify(this.users));
     }
 }
