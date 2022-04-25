@@ -100,4 +100,11 @@ export class BoardService {
         user.boards = user.boards.filter(board => board.id !== boardID);
         localStorage.setItem("users", JSON.stringify(users));
     }
+
+    renameCardByID(users, loggedUser, cardID, newName) {
+        const user = this.getCurrentUser(users, loggedUser);
+        const card = user.cards.find(card => card.id === cardID);
+        card.name = newName;
+        localStorage.setItem("users", JSON.stringify(users));
+    }
 }

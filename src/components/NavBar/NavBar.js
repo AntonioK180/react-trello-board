@@ -50,7 +50,7 @@ const NavBar = (props) => {
                                 <button onClick={recentOnClick} className="dropbtn">Recent</button>
                                 <div id="recent-dropdown-content">
                                     {fetchRecentBoards().map(board =>
-                                        <button className="btn-recent-board" key={board}
+                                        <button className="btn-recent-board cursor-pointer" key={board}
                                             onClick={() =>
                                                 boardService.handleBoardsOnClick(props.users,
                                                     props.loggedUser, board)}>{board}
