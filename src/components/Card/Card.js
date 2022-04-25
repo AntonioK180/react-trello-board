@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.css';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import Portal from '../Portal/Portal';
 import EditCard from '../EditCard/EditCard';
 import {BoardService} from "../../services/BoardService";
@@ -8,7 +8,6 @@ import {BoardService} from "../../services/BoardService";
 const Card = (props) => {
     const boardService = new BoardService();
     const [displayEdit, setDisplayEdit] = useState(false);
-    const [updateBoard, setUpdateBoard] = useState(true);
 
 	const openEditScreen = () => {
 		setDisplayEdit(true);
@@ -18,7 +17,7 @@ const Card = (props) => {
         setDisplayEdit(false);
     }
 
-    const moveCardRigth = () => {
+    const moveCardRight = () => {
         const currCard = boardService.getCardByID(props.users,
             props.loggedUser, props.card_id);
         const column = boardService.getCardInColumn(props.users,
@@ -30,9 +29,9 @@ const Card = (props) => {
         if (nextColumn) {
             currCard.column_id = nextColumn.id;
         }
-        localStorage.setItem("users", JSON.stringify(props.users));
+        props.setCardChange(!props.cardChange);
 
-        setUpdateBoard(!updateBoard);
+        localStorage.setItem("users", JSON.stringify(props.users));
     }
 
     const moveCardLeft = () => {
@@ -47,10 +46,9 @@ const Card = (props) => {
         if (prevColumn) {
             currCard.column_id = prevColumn.id;
         }
+        props.setCardChange(!props.cardChange);
 
         localStorage.setItem("users", JSON.stringify(props.users));
-
-        setUpdateBoard(!updateBoard);
     }
 
     return (
@@ -59,7 +57,7 @@ const Card = (props) => {
                 <div className='card-body cursor-pointer'>
                     <div onClick={openEditScreen} className='click-to-edit cursor-pointer'> {props.cardName} </div>
                     <span onClick={moveCardLeft} className='cursor-pointer arrow-left'></span>
-                    <span onClick={moveCardRigth} className='cursor-pointer arrow-right'></span>
+                    <span onClick={moveCardRight} className='cursor-pointer arrow-right'></span>
                 </div>
             </div>
             {props.renderInArchive ?

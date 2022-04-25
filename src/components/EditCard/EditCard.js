@@ -153,10 +153,6 @@ const EditCard = (props) => {
                     <a onClick={showLabelSelect}><CardAction name='Labels'></CardAction></a>
                     <a onClick={showDateSelect}><CardAction name='Dates'></CardAction></a>
                     <a onClick={addToArchive}><CardAction name='Archive'></CardAction></a>
-                    <CardAction name='Attachment'></CardAction>
-                    <CardAction name='Cover'></CardAction>
-                    <CardAction name='Attachment'></CardAction>
-                    <CardAction name='Cover'></CardAction>
                 </aside>
 
                 <div className='card-description'>
