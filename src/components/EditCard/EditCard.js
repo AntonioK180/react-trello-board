@@ -89,7 +89,7 @@ const EditCard = (props) => {
         let changeForm = document.getElementById("change-name");
 
         if (changeForm.style.display === "none")
-            changeForm.style.display = "block";
+            changeForm.style.display = "flex";
         else
             changeForm.style.display = "none";
     }

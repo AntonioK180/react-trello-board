@@ -191,3 +191,31 @@ textarea {
 	margin-left: 0;
 	margin-right: 4px;
 }
+
+#change-name {
+	display: none;
+	border-radius: 5px;
+	background-color: #EAECF0;
+	margin-left: 1.5em;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.fa-pencil {
+	margin-left: 0.5em;
+	border-radius: 3px;
+	padding: 0.1em;
+}
+
+#change-name .input-name {
+	margin: 0.2em 0.5em;
+	padding: 0.3em;	
+}
+
+#change-name .fa-check {
+	border-radius: 3px;
+	margin-right: 0.5em;
+	background-color: #6751bc;
+	padding: 0.2em;
+	color: white;
+}
