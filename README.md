@@ -11,13 +11,13 @@ This repository holds the contents of a HW for the ELSYS's subject "GUI" for stu
   
 - [x] Елементите в колоните да показват кратко описание на съдържанието в елемента и при click, да се отваря компонент на преден план показващ допълнителната информация съдържаща се в елемента
   
-- [ ] Елементите да могат лесно да се прехвърлят от една в друга колона на дъската
+- [x] Елементите да могат лесно да се прехвърлят от една в друга колона на дъската
   
 - [x] Възможност да се създават дъски
   
 - [x] Екран за виждане на всички дъски в приложението
 
-- [ ] Екран за виждане на всички скорощни добавени елементи в дъските
+- [x] Екран за виждане на всички скорощни добавени елементи в дъските
 
 ## Other requirements and banned elements:
 - [x] Framework - React!
@@ -27,10 +27,10 @@ This repository holds the contents of a HW for the ELSYS's subject "GUI" for stu
 - [ ] DragNDrop (Optional) 
 - [x] No use of HTML tables 
 - [x] Content is up to you
-- [ ] Easy transfer from one column to another
+- [x] Easy transfer from one column to another
 - [x] You can add as much as you like columns
-- [ ] Have a 'Recent' page with all recently created tasks 
-- [ ] Archive stores tasks that are no longer required in other columns
+- [x] Have a 'Recent' page with all recently created tasks 
+- [x] Archive stores tasks that are no longer required in other columns
 - [x] Home page required
 - [x] CRUD like operations for board
 - [x] No database required, no back-end required (but you can use if you want)
