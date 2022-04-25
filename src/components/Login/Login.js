@@ -26,10 +26,10 @@ const Login = () => {
 
         if (users !== null) {
             // if user don't exist - add the new user to the existing users
-            if (!users.includes(username)) {
+            if (!users.find(user => user.username === username)) {
                 users.push({
                     username: username, active_board: null,
-                    recent_boards: [], boards: [], cards: []
+                    recent_boards: [], boards: [], cards: [], archived_cards: []
                 });
                 localStorage.setItem("users", JSON.stringify(users));
             }
@@ -37,7 +37,7 @@ const Login = () => {
             // if there isn't users array - create the array of users
             const users_json = [{
                 username: username, active_board: null,
-                recent_boards: [], boards: [], cards: []
+                recent_boards: [], boards: [], cards: [], archived_cards: []
             }];
             localStorage.setItem("users", JSON.stringify(users_json));
         }

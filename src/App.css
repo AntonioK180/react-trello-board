@@ -30,3 +30,7 @@
     width: 100%;
     z-index: 18;
 }
+
+.hide {
+    display: none;
+}
