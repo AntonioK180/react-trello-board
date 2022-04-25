@@ -14,7 +14,7 @@ const EditCard = (props) => {
     const [displayMembers, setDisplayMembers] = useState(false);
     const [displayDate, setDisplayDate] = useState(false);
     const [cardDescription, setCardDescription] = useState("");
-
+    const [newCardName, setNewCardName] = useState("");
 
     const currentLabels = ['green', 'red', 'yellow'];
     const currentMembers = ['alex', 'balex'];
@@ -85,6 +85,22 @@ const EditCard = (props) => {
         props.setArchive(!props.cardArchived);
     }
 
+    const showChangeForm = () => {
+        let changeForm = document.getElementById("change-name");
+
+        if (changeForm.style.display === "none")
+            changeForm.style.display = "block";
+        else
+            changeForm.style.display = "none";
+    }
+
+    const changeCardName = () => {
+        boardService.renameCardByID(props.users, props.loggedUser, props.card_id, newCardName);
+        document.getElementById("change-name").style.display="none";
+        setNewCardName('');
+        props.setCardRenamed(!props.cardRenamed);
+    }
+
     return (
         <>
             {displayLabels ? <LabelSelector users={props.users}
@@ -105,6 +121,13 @@ const EditCard = (props) => {
                     <div className='title-bar-icon title-icon'></div>
                     {currCard.name}
                     <div className='in-list-text'>in column <span className='list-name'>{currColumn.name}</span></div>
+                    <a onClick={showChangeForm}><i className='fa fa-pencil'></i></a>
+                    <div id="change-name">
+                        <input className="input-name" 
+                               placeholder="Enter new card name..."
+                               type='text' onChange={(event) => setNewCardName(event.target.value)}/> 
+                        <a onClick={changeCardName}><i className='fa fa-check'></i></a>
+                    </div>
                 </div>
 
                 <div className='card-properties'>
