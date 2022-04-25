@@ -3,17 +3,21 @@ import Card from '../Card/Card';
 import './Column.css';
 import {BoardService} from "../../services/BoardService";
 import {v4 as uuidv4} from "uuid";
+import {ArchiveService} from '../../services/ArchiveService';
 
 const Column = (props) => {
     const boardService = new BoardService();
     const [cardName, setCardName] = useState("");
     const [cards, setCards] = useState([{}]);
+    const archiveService = new ArchiveService(props.loggedUser);
+    const [cardArchived, setCardArchived] = useState(false);
 
     const addCard = () => {
         const user = boardService.getCurrentUser(props.users, props.loggedUser);
 
         const card = {
-            column_id: props.id,
+            id: uuidv4(),
+            column_id: props.column_id,
             name: cardName,
             description: "",
             color: "",
@@ -31,11 +35,22 @@ const Column = (props) => {
     return (
         <div className="Column">
             <div className='column-header'>
-                <h1 className='single-column-name'>{props.name}</h1>
+                <h1 className='single-column-name'>{props.columnName}</h1>
             </div>
             {boardService.getCurrentUser(props.users, props.loggedUser).cards
-                .filter((card) => card.column_id === props.id)
-                .map((card) => <Card key={uuidv4()} name={card.name}/>)}
+                .filter((card) => card.column_id === props.column_id)
+                .filter((card) => archiveService.cardInArchive(card.id) === undefined)
+                .map((card) => <Card key={uuidv4()}
+                                     users={props.users}
+                                     loggedUser={props.loggedUser}
+                                     card_id={card.id}
+                                     column_id={props.column_id}
+                                     cardName={card.name}
+                                     setArchive={setCardArchived}
+                                     cardArchived={cardArchived}
+                                     renderInArchive={false}
+                                     cardChange={props.cardChange}
+                                     setCardChange={props.setCardChange}/>)}
             <form onSubmit={addCard} className="add-card-window">
                 <input type="text"
                        required

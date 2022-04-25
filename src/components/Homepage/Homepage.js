@@ -1,4 +1,3 @@
-import './Homepage.css';
 import Board from "../Board/Board";
 import { BoardService } from "../../services/BoardService";
 

@@ -1,0 +1,35 @@
+#archive {
+    display: flex;
+    flex-direction: column;
+    height: 93.5vh;
+}
+
+#archive .cards {        
+    margin: auto;
+    background-color: #ebecf0;
+    border-radius: 5px;
+    width: 20vw;
+    text-align: center;
+    padding: 1.5em;
+}
+
+#archive .btn-back {
+    margin-top: 15px;
+    background-color: #6751bc;
+    border-radius: 5px;
+    border:none;
+    font-size: 1.3rem;
+    width: 25%;
+    color: white;
+}
+
+#archive .btn-back:hover{
+    background-color: #172b4d;
+}
+
+#archive .bg-props {
+    margin-left: 0.5rem;
+    font-size: 1.35rem;
+    background-color: white;
+    border-radius: 5px;
+}

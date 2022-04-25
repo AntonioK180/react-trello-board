@@ -19,6 +19,12 @@
         },
         {}
       ],
+      "archived_cards": [
+        {
+          "id": "<id> (type int)"
+        },
+        {}
+      ],
       "recent_boards": [
         {
           "board_name": "<name> (type string)"
@@ -27,6 +33,7 @@
       ],
       "cards": [
         {
+          "id": "<id> (type int)",
           "column_id": "<id> (type int)",
           "name": "<name> (type string)",
           "description": "<description> (type string) (optional)",

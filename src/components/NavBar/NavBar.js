@@ -6,8 +6,8 @@ import CreateBoard from '../CreateBoard/CreateBoard';
 const NavBar = (props) => {
     const [state, setState] = useState("");
     const [displayCreateBoard, setDisplayCreateBoard] = useState(false);
+
     const boardService = new BoardService();
-    
 
     const recentOnClick = () => {
         let recent = document.getElementById('recent-dropdown-content');
@@ -27,56 +27,65 @@ const NavBar = (props) => {
         return user.recent_boards;
     }
 
+    const logout = (e) => {
+        e.preventDefault();
+        localStorage.removeItem('logged_user');
+        window.location.href = "/";
+    }
+
     return (
         <>
             {displayCreateBoard ? <CreateBoard
                 loggedUser={props.loggedUser}
                 users={props.users} /> : <></>}
-            <div className="homepage">
-                <div className="homepage-title">
-                    <div className="homepage-title-main">
-                        <div className="trello-icon"></div>
-                        <h1>Trello</h1>
-                        {props.loggedUser ?
-                            <>
-                                <div className="boards-dropdown">
-                                    <button onClick={() => window.location.href = "/boards"}
-                                        className="boards-dropbtn">Boards
-                                    </button>
+            <div id="navbar">
+                <div className="navbar-title">
+                    <i className="fa fa-trello"></i>
+                    <div className="title">Trello</div>
+                    {props.loggedUser ?
+                        <>
+                            <button onClick={() => window.location.href = "/boards"}
+                                className="dropbtn boards-btn">Boards</button>
+                            <div className="recent-dropdown">
+                                <button onClick={recentOnClick} className="dropbtn">Recent</button>
+                                <div id="recent-dropdown-content">
+                                    {fetchRecentBoards().map(board =>
+                                        <button className="btn-recent-board" key={board}
+                                            onClick={() =>
+                                                boardService.handleBoardsOnClick(props.users,
+                                                    props.loggedUser, board)}>{board}
+                                        </button>
+                                    )}
                                 </div>
-                                <div className="recent-dropdown">
-                                    <button onClick={recentOnClick} className="recent-dropbtn">Recent</button>
-                                    <div id="recent-dropdown-content">
-                                        {fetchRecentBoards().map(board =>
-                                            <button className="btn-recent-board" key={board}
-                                                onClick={() =>
-                                                    boardService.handleBoardsOnClick(props.users,
-                                                        props.loggedUser, board)}>{board}
-                                            </button>
-                                        )}
-                                    </div>
-                                </div>
-                                <button id="create-btn" onClick={onClickCreateBoard}>Create</button>
-                                <div className="homepage-title-account">
-                                    <div className="search-bar">
-                                        <div className="search-icon"></div>
-                                        <input
-                                            id="search-input"
-                                            type="text"
-                                            onChange={(event) => props.setWordForSearch(event.target.value)}
-                                        />
-                                    </div>
-                                    <div className="account-icon"></div>
-                                    <h2>{props.loggedUser}</h2>
-                                </div>
-                            </>
-                            : <></>}
-                    </div>
+                            </div>
+                            {window.location.pathname === "/archive" ? <></> :
+                                <button className="dropbtn"
+                                    onClick={() => window.location.href = "/archive"}>Archive</button>
+                            }
+                            <button className="create-btn" onClick={onClickCreateBoard}>Create</button>
+                        </>
+                        : <></>}
                 </div>
+                {props.loggedUser ?
+                        <div className="homepage-account">
+                            <div className="search-bar">
+                                <i className="fa fa-search"></i>
+                                <input
+                                    id="search-input"
+                                    type="text"
+                                    onChange={(event) => props.setWordForSearch(event.target.value)}
+                                />
+                            </div>
+                            <i className="fa fa-user"></i>
+                            <div className="logged-user">{props.loggedUser}</div>
+                            <a href="/" className="create-btn logout-link" onClick={logout}>Logout</a>
+                        </div>
+                        : <></>
+                    }
             </div>
         </>
     );
-}
+}               
 
 
 export default NavBar;
